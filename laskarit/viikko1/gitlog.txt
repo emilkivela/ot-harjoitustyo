@@ -1,0 +1,122 @@
+commit 1da60aa394227db7a43097c639c960e96f632f63
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:50:21 2021 +0200
+
+    poistettiin file1, muutettiin file2 -> file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 32eb1fc53583b9a34fb48631352bc2a36ea400c9
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:33:35 2021 +0200
+
+    lisätty hakemisto tiedostoja ja sinne tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a0a48397d65bf4074c8c7239eaf75c3940f5bdbd
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:24:28 2021 +0200
+
+    muutoksia tiedostoihin eka.txt ja kolmas.txt
+
+ eka.txt    | 2 ++
+ kolmas.txt | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+commit 5bc6c0eabb70210bf14a6f19dbaa7158935d1721
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:21:10 2021 +0200
+
+    muutettiin tiedosto.txt:n nimi eka.txt:ksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8e77d21c531657db4d0c52f65f6492316d75f283
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:19:09 2021 +0200
+
+    poistettiin toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 97f1f16b87cbf24ada38d1be5ee22abdf992bed7
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:13:16 2021 +0200
+
+    lisätty hieman tekstiä tiedostoon tiedosto.txt
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit d0869f50bdb7ca7c884c204ee4d8961ac3adcfc7
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:10:56 2021 +0200
+
+    poistettu tekstiä tiedostosta tiedosto.txt
+
+ tiedosto.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 7596c492aa3c584c0071f980d3d3a008bcdc3cd9
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 18:09:53 2021 +0200
+
+    lisätty tekstiä tiedostoon tiedosto.txt
+
+ tiedosto.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit 9505ebe0eac34ea696441743afb059ea0f0db487
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 17:20:55 2021 +0200
+
+    lisätty stuff ja sinne jotain.txt
+
+ stuff/jotain.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b98abe81dd46f8d045e35312e1e1e997b5fe962f
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 17:19:31 2021 +0200
+
+    muutoksia toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 72db92e91628f5f0e902a89d3724870fa8b4046a
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 17:15:55 2021 +0200
+
+    lisätty kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit dbc7daf0774a6cacc5853db97d8510f36baa4a7e
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 16:25:43 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 0683119c3b7743ede68a32dc9467584dc169856a
+Author: Emil Kivelä <emil.kivela@helsinki.fi>
+Date:   Tue Mar 23 15:41:00 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
