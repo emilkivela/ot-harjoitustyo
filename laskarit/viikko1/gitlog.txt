@@ -120,3 +120,5 @@ Date:   Tue Mar 23 15:41:00 2021 +0200
 
  tiedosto.txt | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
+
+Tässä editoidaan tiedostoa suoraan githubissa.
