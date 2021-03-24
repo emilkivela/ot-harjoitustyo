@@ -42,3 +42,6 @@ class Kassapaate:
             self.kassassa_rahaa += summa
         else:
             return
+
+kassa = Kassapaate()
+print(kassa.kassassa_rahaa)
