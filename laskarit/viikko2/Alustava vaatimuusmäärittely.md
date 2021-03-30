@@ -6,6 +6,7 @@ Sovelluksen tarkoitus on olla pygamella totetutettu luolastoseikkailupeli, jossa
 
 ## Käyttöliittymäluonnos
 
+![image](https://user-images.githubusercontent.com/80833101/113048217-f96bee00-91aa-11eb-8bca-47ef26081497.png)
 
 
 Pelissä olisi tarkoituksena olla päävalikko, josta voit aloittaa pelin, tarkastella pelin asetuksia kuten näppäinkomentoja, katsoa kuka pelaaja on läpäissyt pelin korkeimmilla 
