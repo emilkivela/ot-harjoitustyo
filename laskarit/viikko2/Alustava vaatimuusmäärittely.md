@@ -27,6 +27,7 @@ takaisin esimerkiksi esineistä.
 * Viholliset antavat kokemuspisteitä, ja kun tarpeeksi monta kokemuspistettä on kerätty, pelaaja saa uuden tason. Uudella tasolla pelaajan elämäpisteet kasvavat ja hänen 
 hyökkäyksensä tekevät enemmän vahinkoa.
 * Reppu, johon voi kerätä kertakäyttöesineitä. 
+    * Kertakäyttöesineen käytöstä saa jotakin etua, kuten elämäpisteiden parannusta tai vahingon kasvaminen tietyksi ajaksi, mutta esine katoaa käytön jälkeen.
 * Pelaaja voi löytää useita erilaisia sivuaseita.
     * Vain yksi sivuase voi olla kerralaan käytössä, ja pelaaja voi vaihtaa niiden välillä tarpeen vaatiessa.
 * Loppubossi
