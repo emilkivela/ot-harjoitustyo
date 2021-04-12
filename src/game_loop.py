@@ -28,19 +28,15 @@ class GameLoop:
                 
                 if event.key == pygame.K_LEFT:
                     self._left = True
-                    #self._level.move_player(dx = -32)
                 
                 if event.key == pygame.K_RIGHT:
                     self._right = True
-                    #self._level.move_player(dx = 32)
                 
                 if event.key == pygame.K_UP:
                     self._up = True
-                    #self._level.move_player(dy = -32)
                 
                 if event.key == pygame.K_DOWN:
                     self._down = True
-                    #self._level.move_player(dy = 32)
             
             if event.type == pygame.KEYUP:
 
@@ -70,7 +66,10 @@ class GameLoop:
         
         if self._down:
             self._level.move_player(dy = 2)
-    
+
+        if self._level._get_colliding_enemies(self._level.wizard):
+            return False
+
     def _render(self):
         self._renderer.render()
         
