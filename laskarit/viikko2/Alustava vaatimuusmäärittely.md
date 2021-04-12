@@ -29,5 +29,5 @@ hyökkäyksensä tekevät enemmän vahinkoa.
 * Reppu, johon voi kerätä kertakäyttöesineitä. 
     * Kertakäyttöesineen käytöstä saa jotakin etua, kuten elämäpisteiden parannusta tai vahingon kasvaminen tietyksi ajaksi, mutta esine katoaa käytön jälkeen.
 * Pelaaja voi löytää useita erilaisia sivuaseita.
-    * Vain yksi sivuase voi olla kerralaan käytössä, ja pelaaja voi vaihtaa niiden välillä tarpeen vaatiessa.
+    * Vain yksi sivuase voi olla kerrallaan käytössä, ja pelaaja voi vaihtaa niiden välillä tarpeen vaatiessa.
 * Loppubossi
