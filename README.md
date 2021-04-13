@@ -1,17 +1,11 @@
-# Ohjelmistotekniikka
+# Dungeon Crawler
 
-_**Viikko 1**_
+This is a small dungeon crawler rpg game made with pygame. The player can play as a wizard who can shoot
+fireballs and battle with various monsters in different room in the dungeon. All the amazing sprite art is from 
+[here](https://opengameart.org/content/dungeon-crawl-32x32-tiles) except the wizard - that one I made myself! 
+The background music I found [here](https://soundimage.org/looping-music/)
 
-* [gitlog.txt](https://github.com/emilkivela/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-* [komentorivi.txt](https://github.com/emilkivela/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+## Dokumentaatio
+[Työaikavaatimus](https://github.com/emilkivela/ot-harjoitustyo/blob/master/dokumentaatio/ty%C3%B6aikakirjanpito.md)
+[TODO](https://github.com/emilkivela/ot-harjoitustyo/blob/master/dokumentaatio/TODO.md)
 
-_**Viikko 2**_
-
-* [Alustava vaatimuusmäärittely](https://github.com/emilkivela/ot-harjoitustyo/blob/master/laskarit/viikko2/Alustava%20vaatimuusm%C3%A4%C3%A4rittely.md)
-
-Tämä on kurssin __Ohjelmistotekniikka__ ensimmäisen _laskaritehtävän_ README-tiedosto. Tänne tulee paljon esimerkkitekstiä,
-jolla harjoitellaan *Markdown-syntaksia*.
-Tällä rivillä tekstiä harjoittelemme vielä githubin käyttöä sekä _git push_ ja _git pull_- komentoja.
-
-
-**Heippa!**
