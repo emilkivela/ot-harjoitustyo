@@ -5,6 +5,8 @@ fireballs and battle with various monsters in different rooms in the dungeon. Al
 [here](https://opengameart.org/content/dungeon-crawl-32x32-tiles), except the wizard - that one I made myself! 
 The background music I found [here](https://soundimage.org/looping-music/).
 
+Use arrows to move and space to shoot fireballs.
+
 ## Dokumentaatio
 [Työaikavaatimus](https://github.com/emilkivela/ot-harjoitustyo/blob/master/dokumentaatio/ty%C3%B6aikakirjanpito.md)
  
