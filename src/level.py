@@ -4,6 +4,7 @@ from floor import Cobble
 from wall import Brick
 from door import Door
 from skeleton import Skeleton
+from firebolt import Firebolt
 
 class Level:
     def __init__(self, level_room, cell_size):
@@ -13,6 +14,7 @@ class Level:
         self.floors = pygame.sprite.Group()
         self.door = pygame.sprite.Group()
         self.skeletons = pygame.sprite.Group()
+        self.firebolt = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
         self._initialize_sprites(level_room)
@@ -22,7 +24,6 @@ class Level:
     def move_player(self, dx=0, dy=0):
         if not self._player_can_move(dx, dy):
             return
-        
         self.wizard.rect.move_ip(dx, dy)
     
     def _player_can_move(self, dx = 0, dy = 0):
@@ -39,12 +40,26 @@ class Level:
     def _get_colliding_enemies(self, sprite):
         return pygame.sprite.spritecollide(sprite, self.enemies, False)
     
-    def _initialize_sprites(self, level_room):
-        height = len(level_room)
-        width = len(level_room[0])
+    def shoot_projectile(self):
+        if self.wizard.facing == "left":
+            self.firebolt.add(Firebolt(self.wizard.rect.x - 32, self.wizard.rect.y, "left"))
+        
+        if self.wizard.facing == "right":
+            self.firebolt.add(Firebolt(self.wizard.rect.x + 32, self.wizard.rect.y, "right"))
+        
+        if self.wizard.facing == "up":
+            self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y -32, "up"))
+        
+        if self.wizard.facing == "down":
+            self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y +32, "down"))
 
-        for y in range(height):
-            for x in range(width):
+    def projectile_colliding(self, sprite):
+        return pygame.sprite.spritecollide(sprite, self.walls, False)
+
+    def _initialize_sprites(self, level_room):
+
+        for y in range(15):
+            for x in range(20):
                 cell = level_room[y][x]
                 normalized_x = x * self.cell_size
                 normalized_y = y * self.cell_size

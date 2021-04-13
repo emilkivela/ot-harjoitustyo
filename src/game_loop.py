@@ -18,6 +18,7 @@ class GameLoop:
                 break
         
             self._render()
+            self._renderer.shoot_projectile()
 
             self._clock.tick(60)
 
@@ -37,7 +38,10 @@ class GameLoop:
                 
                 if event.key == pygame.K_DOWN:
                     self._down = True
-            
+                
+                if event.key == pygame.K_SPACE:
+                    self._level.shoot_projectile()
+
             if event.type == pygame.KEYUP:
 
                 if event.key == pygame.K_LEFT:
@@ -56,16 +60,21 @@ class GameLoop:
                 return False
         
         if self._left:
+            self._level.wizard.facing = "left"
             self._level.move_player(dx = -2)
-        
+            
         if self._right:
+            self._level.wizard.facing = "right"
             self._level.move_player(dx = 2)
         
         if self._up:
+            self._level.wizard.facing = "up"
             self._level.move_player(dy = -2)
-        
+            
         if self._down:
+            self._level.wizard.facing = "down"
             self._level.move_player(dy = 2)
+            
 
         if self._level._get_colliding_enemies(self._level.wizard):
             return False
