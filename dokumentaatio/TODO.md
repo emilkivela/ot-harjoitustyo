@@ -2,5 +2,7 @@
 - enemy movement
 - projectiles
 - HP
-- multiple room
+- multiple rooms
 - main menu
+- actual room layouts
+
