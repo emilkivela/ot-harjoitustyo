@@ -18,6 +18,7 @@ class GameLoop:
                 break
         
             self._render()
+            self._renderer.render_healthbar()
             self._renderer.shoot_projectile()
 
             self._clock.tick(60)

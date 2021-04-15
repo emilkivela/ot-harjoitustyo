@@ -23,10 +23,15 @@ class Renderer():
 
             if firebolt.facing == "down":
                 firebolt.rect.move_ip(0, 3)
-            
+                
             if self._level.projectile_colliding(firebolt):
+                firebolt.kill()
+
+            while len(self._level.firebolt) > 3:
                 firebolt.kill()
 
         pygame.display.update()
 
+    def render_healthbar(self):
+        self._display.blit(self._level.healthbar.image, (0,0))
         

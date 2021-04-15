@@ -5,6 +5,9 @@ from wall import Brick
 from door import Door
 from skeleton import Skeleton
 from firebolt import Firebolt
+from healthbar import HealthBar
+from load_image import load_image
+healthbars = [load_image("0hearts.png"), load_image("1heart.png"), load_image("2hearts.png"), load_image("3hearts.png")]
 
 class Level:
     def __init__(self, level_room, cell_size):
@@ -19,6 +22,7 @@ class Level:
         self.all_sprites = pygame.sprite.Group()
         self._initialize_sprites(level_room)
         self.enemies.add(self.skeletons)
+        self.healthbar = HealthBar()
         
 
     def move_player(self, dx=0, dy=0):
@@ -38,8 +42,23 @@ class Level:
         return can_move
     
     def _get_colliding_enemies(self, sprite):
-        return pygame.sprite.spritecollide(sprite, self.enemies, False)
-    
+        if pygame.sprite.spritecollide(sprite, self.enemies, False):
+            print(self.wizard.health) 
+            self.wizard.health -= 1
+            self.healthbar.image = healthbars[self.wizard.health]
+            if self.wizard.health <= 0:
+                return True
+            else:
+                if self.wizard.facing == "up":
+                    self.move_player(dy = 32)
+                if self.wizard.facing == "down":
+                    self.move_player(dy = -32)
+                if self.wizard.facing == "left":
+                    self.move_player(dx = 32)
+                if self.wizard.facing == "right":
+                    self.move_player(dx = -32)
+
+
     def shoot_projectile(self):
         if self.wizard.facing == "left":
             self.firebolt.add(Firebolt(self.wizard.rect.x - 32, self.wizard.rect.y, "left"))
