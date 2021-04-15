@@ -24,8 +24,10 @@ class Renderer():
             if firebolt.facing == "down":
                 firebolt.rect.move_ip(0, 3)
                 
-            if self._level.projectile_colliding(firebolt):
+            if self._level.projectile_colliding_walls(firebolt):
                 firebolt.kill()
+            
+            self._level.projectile_colliding_enemy(firebolt)
 
             while len(self._level.firebolt) > 3:
                 firebolt.kill()

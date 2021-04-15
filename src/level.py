@@ -72,8 +72,15 @@ class Level:
         if self.wizard.facing == "down":
             self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y +32, "down"))
 
-    def projectile_colliding(self, sprite):
+    def projectile_colliding_walls(self, sprite):
         return pygame.sprite.spritecollide(sprite, self.walls, False)
+
+    def projectile_colliding_enemy(self, sprite):
+        for enemy in self.enemies:
+            if pygame.sprite.collide_rect(sprite, enemy):
+                enemy.health =-1
+            if enemy.health <= 0:
+                enemy.kill()
 
     def _initialize_sprites(self, level_room):
 

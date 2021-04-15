@@ -7,7 +7,7 @@ class Skeleton(pygame.sprite.Sprite):
         super().__init__()
         
         self.image = load_image("skeleton.png")
-        
+        self.health = 2
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
