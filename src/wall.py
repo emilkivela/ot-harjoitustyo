@@ -1,4 +1,4 @@
-import pygame 
+import pygame
 from load_image import load_image
 
 
@@ -11,5 +11,3 @@ class Brick(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
-

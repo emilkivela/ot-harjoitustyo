@@ -26,8 +26,8 @@ LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 CELL_SIZE = 32
 
 def main():
-    
-    display = pygame.display.set_mode((640,480))
+
+    display = pygame.display.set_mode((640, 480))
 
     pygame.display.set_caption("Dungeon Crawler")
     pygame.mixer.init()
@@ -38,10 +38,9 @@ def main():
     renderer = Renderer(display, level)
     clock = Clock()
     game_loop = GameLoop(level, renderer, eventqueue, clock, CELL_SIZE)
-    
-    pygame.init()
+
+    pygame.init() # pylint: disable=no-member
     game_loop.start()
 
 if __name__ == "__main__":
     main()
-

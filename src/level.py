@@ -7,7 +7,9 @@ from skeleton import Skeleton
 from firebolt import Firebolt
 from healthbar import HealthBar
 from load_image import load_image
-healthbars = [load_image("0hearts.png"), load_image("1heart.png"), load_image("2hearts.png"), load_image("3hearts.png")]
+from game_loop import HIT_COOLDOWN
+HEALTHBARS = [load_image("0hearts.png"), load_image("1heart.png"),
+              load_image("2hearts.png"), load_image("3hearts.png")]
 
 class Level:
     def __init__(self, level_room, cell_size):
@@ -23,14 +25,14 @@ class Level:
         self._initialize_sprites(level_room)
         self.enemies.add(self.skeletons)
         self.healthbar = HealthBar()
-        
+
 
     def move_player(self, dx=0, dy=0):
         if not self._player_can_move(dx, dy):
             return
         self.wizard.rect.move_ip(dx, dy)
-    
-    def _player_can_move(self, dx = 0, dy = 0):
+
+    def _player_can_move(self, dx=0, dy=0):
         self.wizard.rect.move_ip(dx, dy)
 
         colliding_walls = pygame.sprite.spritecollide(self.wizard, self.walls, False)
@@ -40,35 +42,37 @@ class Level:
         self.wizard.rect.move_ip(-dx, -dy)
 
         return can_move
-    
+
     def _get_colliding_enemies(self, sprite):
         if pygame.sprite.spritecollide(sprite, self.enemies, False):
-            print(self.wizard.health) 
-            self.wizard.health -= 1
-            self.healthbar.image = healthbars[self.wizard.health]
+            if not self.wizard.cooldown:
+                self.wizard.health -= 1
+                self.wizard.cooldown = True
+                pygame.time.set_timer(HIT_COOLDOWN, 1000)
+            self.healthbar.image = HEALTHBARS[self.wizard.health]
             if self.wizard.health <= 0:
                 return True
             else:
                 if self.wizard.facing == "up":
-                    self.move_player(dy = 32)
+                    self.move_player(dy=32)
                 if self.wizard.facing == "down":
-                    self.move_player(dy = -32)
+                    self.move_player(dy=-32)
                 if self.wizard.facing == "left":
-                    self.move_player(dx = 32)
+                    self.move_player(dx=32)
                 if self.wizard.facing == "right":
-                    self.move_player(dx = -32)
+                    self.move_player(dx=-32)
 
 
     def shoot_projectile(self):
         if self.wizard.facing == "left":
             self.firebolt.add(Firebolt(self.wizard.rect.x - 32, self.wizard.rect.y, "left"))
-        
+
         if self.wizard.facing == "right":
             self.firebolt.add(Firebolt(self.wizard.rect.x + 32, self.wizard.rect.y, "right"))
-        
+
         if self.wizard.facing == "up":
             self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y -32, "up"))
-        
+
         if self.wizard.facing == "down":
             self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y +32, "down"))
 
@@ -78,7 +82,8 @@ class Level:
     def projectile_colliding_enemy(self, sprite):
         for enemy in self.enemies:
             if pygame.sprite.collide_rect(sprite, enemy):
-                enemy.health =-1
+                sprite.kill()
+                enemy.health = -1
             if enemy.health <= 0:
                 enemy.kill()
 
@@ -102,7 +107,5 @@ class Level:
                 elif cell == 4:
                     self.floors.add(Cobble(normalized_x, normalized_y))
                     self.skeletons.add(Skeleton(normalized_x, normalized_y))
-                
-        self.all_sprites.add(self.floors, self.walls, self.wizard, self.door, self.skeletons)
 
-    
+        self.all_sprites.add(self.floors, self.walls, self.wizard, self.door, self.skeletons)
