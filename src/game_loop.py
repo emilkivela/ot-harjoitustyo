@@ -17,10 +17,8 @@ class GameLoop:
 
     def start(self):
         while True:
-            if not self._handle_events():
+            if self._handle_events() == False:
                 break
-
-            #current_time = self._clock.get_ticks()
 
             self._render()
             self._renderer.render_healthbar()
