@@ -15,9 +15,20 @@ class Level:
         self._initialize_sprites(level_room)
 
     def move_player(self, dx=0, dy=0):
-        # if not self._player_can_move(dx, dy):
-        #    return
+        if not self._player_can_move(dx, dy):
+            return
         self.wizard.rect.move_ip(dx, dy)
+    
+    def _player_can_move(self, dx=0, dy=0):
+        self.wizard.rect.move_ip(dx, dy)
+
+        colliding_walls = pygame.sprite.spritecollide(self.wizard, self.walls, False)
+
+        can_move = not colliding_walls
+
+        self.wizard.rect.move_ip(-dx, -dy)
+
+        return can_move
 
     def _initialize_sprites(self, level_room):
 
