@@ -20,6 +20,7 @@ LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 
 CELL_SIZE = 32
 
+
 class TestLevel(unittest.TestCase):
     def setUp(self):
         self.level_room = Level(LEVEL_ROOM, CELL_SIZE)

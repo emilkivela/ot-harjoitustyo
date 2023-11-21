@@ -23,6 +23,7 @@ LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 
 CELL_SIZE = 32
 
+
 def main():
     display = pygame.display.set_mode((640, 480))
     pygame.display.set_caption("Dungeon Crawler")
@@ -34,6 +35,7 @@ def main():
 
     pygame.init()
     game_loop.start()
+
 
 if __name__ == "__main__":
     main()

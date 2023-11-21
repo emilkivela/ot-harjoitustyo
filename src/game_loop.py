@@ -25,38 +25,35 @@ class GameLoop:
     def _handle_events(self):
 
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN: # pylint: disable=no-member
+            if event.type == pygame.KEYDOWN:
 
-                if event.key == pygame.K_LEFT: # pylint: disable=no-member
+                if event.key == pygame.K_LEFT:
                     self._left = True
 
-                if event.key == pygame.K_RIGHT: # pylint: disable=no-member
+                if event.key == pygame.K_RIGHT:
                     self._right = True
 
-                if event.key == pygame.K_UP: # pylint: disable=no-member
+                if event.key == pygame.K_UP:
                     self._up = True
 
-                if event.key == pygame.K_DOWN: # pylint: disable=no-member
+                if event.key == pygame.K_DOWN:
                     self._down = True
 
-                if event.key == pygame.K_SPACE: # pylint: disable=no-member
-                    self._level.shoot_projectile()
+            if event.type == pygame.KEYUP:
 
-            if event.type == pygame.KEYUP: # pylint: disable=no-member
-
-                if event.key == pygame.K_LEFT: # pylint: disable=no-member
+                if event.key == pygame.K_LEFT:
                     self._left = False
 
-                if event.key == pygame.K_RIGHT: # pylint: disable=no-member
+                if event.key == pygame.K_RIGHT:
                     self._right = False
 
-                if event.key == pygame.K_UP: # pylint: disable=no-member
+                if event.key == pygame.K_UP:
                     self._up = False
 
-                if event.key == pygame.K_DOWN: # pylint: disable=no-member
+                if event.key == pygame.K_DOWN:
                     self._down = False
 
-            elif event.type == pygame.QUIT: # pylint: disable=no-member
+            elif event.type == pygame.QUIT:
                 return False
 
         if self._left:
@@ -77,5 +74,3 @@ class GameLoop:
 
     def _render(self):
         self._renderer.render()
-
-        
