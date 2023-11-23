@@ -22,7 +22,7 @@ class GameLoop:
                 break
 
             self._render()
-
+            
             self._clock.tick(60)
 
     def _handle_events(self):
@@ -48,6 +48,9 @@ class GameLoop:
 
                 if event.key == pygame.K_DOWN:
                     self._down = True
+                
+                if event.key == pygame.K_SPACE:
+                    self._level.shoot_projectile()
 
             if event.type == pygame.KEYUP:
 
@@ -86,6 +89,6 @@ class GameLoop:
             return False
 
     def _render(self):
-        self._renderer.render_healthbar()
         self._renderer.render()
-        
+        self._renderer.render_healthbar()
+        self._renderer.shoot_projectile()

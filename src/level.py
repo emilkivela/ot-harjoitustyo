@@ -5,6 +5,7 @@ from floor import Cobble
 from wall import Brick
 from door import Door
 from healthbar import HealthBar
+from firebolt import Firebolt
 from game_loop import HIT_COOLDOWN, HIT_COOLDOWN_ENEMY
 from load_image import load_image
 HEALTHBARS = [load_image("0hearts.png"), load_image("1heart.png"),
@@ -20,6 +21,7 @@ class Level:
         self.door = pygame.sprite.Group()
         self.skeletons = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
+        self.firebolt = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
         self._initialize_sprites(level_room)
         self.enemies.add(self.skeletons)
@@ -59,6 +61,32 @@ class Level:
                     self.move_player(dx=32)
                 if self.wizard.facing == "right":
                     self.move_player(dx=-32)
+    def shoot_projectile(self):
+        if self.wizard.facing == "left":
+            self.firebolt.add(Firebolt(self.wizard.rect.x - 32, self.wizard.rect.y, "left"))
+
+        if self.wizard.facing == "right":
+            self.firebolt.add(Firebolt(self.wizard.rect.x + 32, self.wizard.rect.y, "right"))
+
+        if self.wizard.facing == "up":
+            self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y -32, "up"))
+
+        if self.wizard.facing == "down":
+            self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y +32, "down"))
+
+    def projectile_colliding_walls(self, sprite):
+        return pygame.sprite.spritecollide(sprite, self.walls, False)
+
+    def projectile_colliding_enemy(self, sprite):
+        for enemy in self.enemies:
+            if pygame.sprite.collide_rect(sprite, enemy):
+                sprite.kill()
+                if not enemy.cooldown:
+                    enemy.health -= 1
+                    enemy.cooldown == True
+                    pygame.time.set_timer(HIT_COOLDOWN_ENEMY, 1000)
+            if enemy.health <= 0:
+                enemy.kill()
 
     def _initialize_sprites(self, level_room):
 
