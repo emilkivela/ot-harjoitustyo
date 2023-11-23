@@ -47,6 +47,6 @@ class Renderer():
     def render_game_over(self):
         font = pygame.font.SysFont('arial', 40)
         self._display.fill((0, 0, 0))
-        death = font.render('You died', True, (255, 255, 255))
+        death = font.render('Game Over', True, (255, 255, 255))
         self._display.blit(death, (200,200))
         pygame.display.update()

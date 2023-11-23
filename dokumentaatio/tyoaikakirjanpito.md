@@ -7,4 +7,5 @@
 | 15.11 | 4    | pohja-arkkitehtuuri, hahmon liike, kartan piirtäminen |
 | 21.11 | 2    | pylint ja autopep setup, object collide |
 | 23.11 | 5    | viholliset, projektiilit, elämäpalkki |
-|       | 14   | yhteensä
+| 23.11 | 2    | main menu, game over |
+|       | 16   | yhteensä

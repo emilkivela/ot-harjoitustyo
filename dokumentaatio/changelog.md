@@ -9,3 +9,5 @@
 - Lisätty peliin ominaisuus ampua tulipalloja
 - Lisätty peliin päivittyvä HP-palkki
 - Lisätty peliin collision detection vihollisille ja seinille
+- Lisätty alkeellinen main menu
+- Lisätty alkeellinen game over-näyttö
