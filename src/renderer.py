@@ -1,5 +1,5 @@
 import pygame
-
+from load_font import load_font
 
 class Renderer():
     def __init__(self, display, level):
@@ -34,7 +34,7 @@ class Renderer():
         pygame.display.update()
     
     def render_menu(self):
-        font = pygame.font.SysFont('arial', 40)
+        font = load_font('Acer710_CGA.woff', 20)
         self._display.fill((0, 0, 0))
         start_button = font.render('Press ENTER to start', True, (255, 255, 255))
         movement_info = font.render('Arrows to move', True, (255, 255, 255))
@@ -45,7 +45,7 @@ class Renderer():
         pygame.display.update()
     
     def render_game_over(self):
-        font = pygame.font.SysFont('arial', 40)
+        font = load_font('Acer710_CGA.woff', 20)
         self._display.fill((0, 0, 0))
         death = font.render('Game Over', True, (255, 255, 255))
         self._display.blit(death, (200,200))
