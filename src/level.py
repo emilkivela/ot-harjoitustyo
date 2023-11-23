@@ -31,7 +31,7 @@ class Level:
         if not self._player_can_move(dx, dy):
             return
         self.wizard.rect.move_ip(dx, dy)
-    
+
     def _player_can_move(self, dx=0, dy=0):
         self.wizard.rect.move_ip(dx, dy)
 
@@ -52,15 +52,15 @@ class Level:
             self.healthbar.image = HEALTHBARS[self.wizard.health]
             if self.wizard.health <= 0:
                 return True
-            else:
-                if self.wizard.facing == "up":
-                    self.move_player(dy=32)
-                if self.wizard.facing == "down":
-                    self.move_player(dy=-32)
-                if self.wizard.facing == "left":
-                    self.move_player(dx=32)
-                if self.wizard.facing == "right":
-                    self.move_player(dx=-32)
+            if self.wizard.facing == "up":
+                self.move_player(dy=32)
+            if self.wizard.facing == "down":
+                self.move_player(dy=-32)
+            if self.wizard.facing == "left":
+                self.move_player(dx=32)
+            if self.wizard.facing == "right":
+                self.move_player(dx=-32)
+
     def shoot_projectile(self):
         if self.wizard.facing == "left":
             self.firebolt.add(Firebolt(self.wizard.rect.x - 32, self.wizard.rect.y, "left"))

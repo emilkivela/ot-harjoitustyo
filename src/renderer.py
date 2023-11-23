@@ -9,7 +9,7 @@ class Renderer():
     def render(self):
         self._level.all_sprites.draw(self._display)
         pygame.display.update()
-    
+
     def render_healthbar(self):
         self._display.blit(self._level.healthbar.image, (0, 0))
         pygame.display.update()
