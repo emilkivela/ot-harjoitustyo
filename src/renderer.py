@@ -32,3 +32,21 @@ class Renderer():
                 firebolt.kill()
 
         pygame.display.update()
+    
+    def render_menu(self):
+        font = pygame.font.SysFont('arial', 40)
+        self._display.fill((0, 0, 0))
+        start_button = font.render('Press ENTER to start', True, (255, 255, 255))
+        movement_info = font.render('Arrows to move', True, (255, 255, 255))
+        shoot_info = font.render('Space to shoot fireballs', True, (255, 255, 255))
+        self._display.blit(start_button, (150,100))
+        self._display.blit(movement_info, (150,200))
+        self._display.blit(shoot_info, (150,300))
+        pygame.display.update()
+    
+    def render_game_over(self):
+        font = pygame.font.SysFont('arial', 40)
+        self._display.fill((0, 0, 0))
+        death = font.render('You died', True, (255, 255, 255))
+        self._display.blit(death, (200,200))
+        pygame.display.update()
