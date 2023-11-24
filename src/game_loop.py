@@ -19,15 +19,15 @@ class GameLoop:
 
     def start(self):
         while True:
-            if self._handle_events() == False:
+            if self._handle_events() is False:
                 break
-            
+
             if self._game_state == "main_menu":
                 self._renderer.render_menu()
 
             if self._game_state == "game":
                 self._render()
-            
+
             if self._game_state == "game_over":
                 self._renderer.render_game_over()
 
@@ -96,7 +96,7 @@ class GameLoop:
             self._level.wizard.facing = "down"
             self._level.move_player(dy=2)
 
-        if self._level._get_colliding_enemies(self._level.wizard):
+        if self._level.get_colliding_enemies(self._level.wizard):
             self._game_state = "game_over"
 
     def _render(self):

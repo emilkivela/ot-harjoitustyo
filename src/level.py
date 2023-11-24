@@ -43,7 +43,7 @@ class Level:
 
         return can_move
 
-    def _get_colliding_enemies(self, sprite):
+    def get_colliding_enemies(self, sprite):
         if pygame.sprite.spritecollide(sprite, self.enemies, False):
             if not self.wizard.cooldown:
                 self.wizard.health -= 1
@@ -83,7 +83,7 @@ class Level:
                 sprite.kill()
                 if not enemy.cooldown:
                     enemy.health -= 1
-                    enemy.cooldown == True
+                    enemy.cooldown = True
                     pygame.time.set_timer(HIT_COOLDOWN_ENEMY, 1000)
             if enemy.health <= 0:
                 enemy.kill()

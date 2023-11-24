@@ -32,7 +32,7 @@ class Renderer():
                 firebolt.kill()
 
         pygame.display.update()
-    
+
     def render_menu(self):
         font = load_font('Acer710_CGA.woff', 20)
         self._display.fill((0, 0, 0))
@@ -43,7 +43,7 @@ class Renderer():
         self._display.blit(movement_info, (150,200))
         self._display.blit(shoot_info, (150,300))
         pygame.display.update()
-    
+
     def render_game_over(self):
         font = load_font('Acer710_CGA.woff', 20)
         self._display.fill((0, 0, 0))
