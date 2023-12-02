@@ -9,4 +9,5 @@
 | 23.11 | 4    | viholliset, projektiilit, elämäpalkki |
 | 23.11 | 2    | main menu, game over |
 | 23.11 | 1    | fonttien implementointi |
+| 2.12  | 1    | lisää testejä |
 |       | 16   | yhteensä
