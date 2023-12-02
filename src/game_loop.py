@@ -35,7 +35,7 @@ class GameLoop:
 
     def _handle_events(self):
 
-        for event in pygame.event.get():
+        for event in self._eventqueue.get():
             if event.type == HIT_COOLDOWN:
                 self._level.wizard.cooldown = False
                 pygame.time.set_timer(HIT_COOLDOWN, 0)
