@@ -1,4 +1,5 @@
 import pygame
+from textbox import TextBox
 
 HIT_COOLDOWN = pygame.USEREVENT
 HIT_COOLDOWN_ENEMY = pygame.USEREVENT + 1
@@ -11,6 +12,7 @@ class GameLoop:
         self._eventqueue = eventqueue
         self._cell_size = cell_size
         self._renderer = renderer
+        self.textbox = TextBox(0, 40, 100, 35)
         self._game_state = "main_menu"
         self._left = False
         self._right = False
@@ -19,34 +21,42 @@ class GameLoop:
 
     def start(self):
         while True:
+            
             if self._handle_events() is False:
                 break
-
+            
             if self._game_state == "main_menu":
-                self._renderer.render_menu()
+                self._renderer.render_menu(self.textbox)
 
             if self._game_state == "game":
                 self._render()
 
             if self._game_state == "game_over":
-                self._renderer.render_game_over()
+                self._renderer.render_game_over(self.textbox.text)
 
             self._clock.tick(60)
 
     def _handle_events(self):
-
+        
         for event in self._eventqueue.get():
             if event.type == HIT_COOLDOWN:
                 self._level.wizard.cooldown = False
                 pygame.time.set_timer(HIT_COOLDOWN, 0)
+
             if event.type == HIT_COOLDOWN_ENEMY:
                 for enemy in self._level.enemies:
                     enemy.cooldown = False
                 pygame.time.set_timer(HIT_COOLDOWN_ENEMY, 0)
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self.textbox.toggle(event)
+
             if event.type == pygame.KEYDOWN:
-                if self._game_state == "main_menu":
-                    if event.key == pygame.K_RETURN:
-                        self._game_state = "game"
+                if self.textbox.active:
+                    self.textbox.write(event)
+
+                if event.key == pygame.K_RETURN:
+                    self._game_state = "game"
 
                 if event.key == pygame.K_LEFT:
                     self._left = True
@@ -95,9 +105,10 @@ class GameLoop:
         if self._down:
             self._level.wizard.facing = "down"
             self._level.move_player(dy=2)
-
-        if self._level.get_colliding_enemies(self._level.wizard):
-            self._game_state = "game_over"
+ 
+        if self._game_state == "game":
+            if self._level.get_colliding_enemies(self._level.wizard):
+                self._game_state = "game_over"
 
     def _render(self):
         self._renderer.render()

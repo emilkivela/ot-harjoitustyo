@@ -10,4 +10,5 @@
 | 23.11 | 2    | main menu, game over |
 | 23.11 | 1    | fonttien implementointi |
 | 2.12  | 1    | lisää testejä |
-|       | 16   | yhteensä
+| 5.12  | 4    | pelaajanimen lisääminen |
+|       | 21   | yhteensä
