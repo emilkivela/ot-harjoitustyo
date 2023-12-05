@@ -11,7 +11,7 @@ vihollisille
 ### Testit
 Yksikkötestit voi suorittaa komennolla ``` poetry run invoke test ```
 
-Kattavavuusraportin voi generoida komennolla ``` poetry run ivoke coverage-report ```
+Kattavavuusraportin voi generoida komennolla ``` poetry run invoke coverage-report ```
 
 Pylint-testit voi suorittaa komennolla ``` poetry run invoke lint ```
 
