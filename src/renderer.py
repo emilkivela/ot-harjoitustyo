@@ -36,10 +36,9 @@ class Renderer():
 
 
     def render_menu(self, textbox):
-        self.textbox = textbox
         font = load_font('Acer710_CGA.woff', 20)
         self._display.fill((0, 0, 0))
-        self.text_surface = font.render(self.textbox.text, True, (255,255,255))
+        text_surface = font.render(textbox.text, True, (255,255,255))
         start_button = font.render('Enter username and press ENTER', True, (255, 255, 255))
         movement_info = font.render('Arrows to move', True, (255, 255, 255))
         shoot_info = font.render('Space to shoot fireballs', True, (255, 255, 255))
@@ -47,10 +46,10 @@ class Renderer():
         self._display.blit(start_button, (0,10))
         self._display.blit(movement_info, (0,100))
         self._display.blit(shoot_info, (0,200))
-        self._display.blit(self.text_surface,(self.textbox.box.x+5, self.textbox.box.y+5))
-        self.textbox.update(self.text_surface.get_width())
+        self._display.blit(text_surface,(textbox.box.x+5, textbox.box.y+5))
+        textbox.update(text_surface.get_width())
 
-        pygame.draw.rect(self._display, self.textbox.color, self.textbox.box, 2)
+        pygame.draw.rect(self._display, textbox.color, textbox.box, 2)
         pygame.display.update()
 
     def render_game_over(self, username):

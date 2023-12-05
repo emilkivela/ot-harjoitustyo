@@ -11,3 +11,8 @@
 - Lisätty peliin collision detection vihollisille ja seinille
 - Lisätty alkeellinen main menu
 - Lisätty alkeellinen game over-näyttö
+
+## Viikko 5
+- Testattu, että seinien läpi ei voi kävellä
+- Lisätty TextBox-luokka
+- Lisätty ominaisuus käyttäjänimen syöttämiselle

@@ -21,10 +21,10 @@ class GameLoop:
 
     def start(self):
         while True:
-            
+
             if self._handle_events() is False:
                 break
-            
+
             if self._game_state == "main_menu":
                 self._renderer.render_menu(self.textbox)
 
@@ -37,7 +37,7 @@ class GameLoop:
             self._clock.tick(60)
 
     def _handle_events(self):
-        
+
         for event in self._eventqueue.get():
             if event.type == HIT_COOLDOWN:
                 self._level.wizard.cooldown = False
@@ -105,7 +105,7 @@ class GameLoop:
         if self._down:
             self._level.wizard.facing = "down"
             self._level.move_player(dy=2)
- 
+
         if self._game_state == "game":
             if self._level.get_colliding_enemies(self._level.wizard):
                 self._game_state = "game_over"
