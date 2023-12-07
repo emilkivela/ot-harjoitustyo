@@ -11,4 +11,5 @@
 | 23.11 | 1    | fonttien implementointi |
 | 2.12  | 1    | lisää testejä |
 | 5.12  | 4    | pelaajanimen lisääminen |
-|       | 21   | yhteensä
+| 7.12  | 1    | docstring |
+|       | 22   | yhteensä
