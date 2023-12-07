@@ -13,7 +13,15 @@ HEALTHBARS = [load_image("0hearts.png"), load_image("1heart.png"),
 
 
 class Level:
+    """Class that handles everything contained in a level, such as the sprites and their actions.
+    """
     def __init__(self, level_room, cell_size):
+        """Constructor that creates the Level object
+
+        Args:
+            level_room (list): A matrix that contains the information what is where in the level
+            cell_size (int): The dimensions for each sprite. This game uses 32 x 32 pixel sprites
+        """
         self.cell_size = cell_size
         self.wizard = None
         self.walls = pygame.sprite.Group()
@@ -28,11 +36,26 @@ class Level:
         self.healthbar = HealthBar()
 
     def move_player(self, dx=0, dy=0):
+        """Moves the player sprite on the level
+
+        Args:
+            dx (int, optional): How much the player is moved on the x-axis Defaults to 0.
+            dy (int, optional): How much the player is moved on the y-axis. Defaults to 0.
+        """
         if not self._player_can_move(dx, dy):
             return
         self.wizard.rect.move_ip(dx, dy)
 
     def _player_can_move(self, dx=0, dy=0):
+        """Checks if the player can move in the wanted direction or if it collides with objects (such as walls)
+
+        Args:
+            dx (int, optional): The wanted place to move the player on the x-axis. Defaults to 0.
+            dy (int, optional): The wanted place to move the player on the y-axis. Defaults to 0.
+
+        Returns:
+            Boolean: The information if the player collides with walls or not
+        """
         self.wizard.rect.move_ip(dx, dy)
 
         colliding_walls = pygame.sprite.spritecollide(self.wizard, self.walls, False)
@@ -44,6 +67,17 @@ class Level:
         return can_move
 
     def get_colliding_enemies(self, sprite):
+        """Checks if the player collides with enemies,
+          makes the player lose hp, 
+          checks if he dies and gives i-frames and push back,
+          updates health bar image
+
+        Args:
+            sprite (Wizard()): _The player sprite
+
+        Returns:
+            Boolean: Returns True if the players health drops to 0
+        """
         if pygame.sprite.spritecollide(sprite, self.enemies, False):
             if not self.wizard.cooldown:
                 self.wizard.health -= 1
@@ -62,6 +96,8 @@ class Level:
                 self.move_player(dx=-32)
 
     def shoot_projectile(self):
+        """Shoots the fireball in the direction the player is facing
+        """
         if self.wizard.facing == "left":
             self.firebolt.add(Firebolt(self.wizard.rect.x - 32, self.wizard.rect.y, "left"))
 
@@ -75,9 +111,22 @@ class Level:
             self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y +32, "down"))
 
     def projectile_colliding_walls(self, sprite):
+        """Checks if the fireball sprite collides with walls
+
+        Args:
+            sprite (Fireball(): The Fireball-sprite
+
+        Returns:
+            Boolean: Return if the fireball collides
+        """
         return pygame.sprite.spritecollide(sprite, self.walls, False)
 
     def projectile_colliding_enemy(self, sprite):
+        """Checks if the fireball collides with an enemy, and if so, makes it take damage
+
+        Args:
+            sprite (Fireball()): The Fireball-sprite
+        """
         for enemy in self.enemies:
             if pygame.sprite.collide_rect(sprite, enemy):
                 sprite.kill()
@@ -89,6 +138,11 @@ class Level:
                 enemy.kill()
 
     def _initialize_sprites(self, level_room):
+        """Builds the level sprites based on the given numbers on the level matrix
+
+        Args:
+            level_room (list): The level matrix information
+        """
 
         for y in range(15):
             for x in range(20):
