@@ -11,7 +11,7 @@ vihollisille
 ### Testit
 Yksikkötestit voi suorittaa komennolla ``` poetry run invoke test ```
 
-Kattavavuusraportin voi generoida komennolla ``` poetry run ivoke coverage-report ```
+Kattavavuusraportin voi generoida komennolla ``` poetry run invoke coverage-report ```
 
 Pylint-testit voi suorittaa komennolla ``` poetry run invoke lint ```
 
@@ -20,5 +20,6 @@ Pylint-testit voi suorittaa komennolla ``` poetry run invoke lint ```
 - [Työaikakirjanpito](https://github.com/emilkivela/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
 - [Changelog](https://github.com/emilkivela/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 - [Arkkitehtuuri](https://github.com/emilkivela/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+- [Viikon 5 release](https://github.com/emilkivela/ot-harjoitustyo/archive/refs/tags/viikko5.zip)
 - [Sprite-grafiikka](https://opengameart.org/content/dungeon-crawl-32x32-tiles)
 - [Fontit](https://int10h.org/oldschool-pc-fonts/download/)
