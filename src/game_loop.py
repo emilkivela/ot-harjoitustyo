@@ -1,6 +1,8 @@
 import pygame
 from textbox import TextBox
 import time
+from resultrepository import ResultRepository
+from connect_db import get_db_connection
 HIT_COOLDOWN = pygame.USEREVENT
 HIT_COOLDOWN_ENEMY = pygame.USEREVENT + 1
 
@@ -19,6 +21,8 @@ class GameLoop:
         self._up = False
         self._down = False
         self.start_time = 0
+        self.connection = get_db_connection()
+        self.resultrepo = ResultRepository(self.connection)
 
     def start(self):
         while True:
@@ -33,7 +37,8 @@ class GameLoop:
                 self._render()
 
             if self._game_state == "game_over":
-                self._renderer.render_game_over(self.textbox.text)
+                
+                self._renderer.render_game_over(self.textbox.text, self.scoreboard)
 
             self._clock.tick(60)
             str(int(time.time()-self.start_time))
@@ -111,6 +116,8 @@ class GameLoop:
 
         if self._game_state == "game":
             if self._level.get_colliding_enemies(self._level.wizard):
+                self.resultrepo.save_info(self.textbox.text, int(time.time()-self.start_time))
+                self.scoreboard = self.resultrepo.get_scoreboard()
                 self._game_state = "game_over"
 
     def _render(self):

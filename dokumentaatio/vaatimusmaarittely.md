@@ -7,10 +7,9 @@ ratkoo pulmia.
 - Alkeellinen aloitusnäyttö
 - Käyttäjänimen syöttäminen
 - Pelaaja pystyy liikkumaan, ampumaan tulipalloja, tappamaan vihollisia ja vahingoittumaan
-- Alkeellinen lopetusnäyttö
+- Ajanotto, kuinka kauan pelin läpäisyssä kuluu ja tallennus tietokantaan
+- Nopeimmat (paikalliset) ajat esitellään pelin lopussa
 
 ### Suunnitellut toiminnallisuudet
 - Voi siirtyä tasosta toiseen
-- Ajanotto, kuinka kauan pelin läpäisyssä kuluu ja tallennus tietokantaan
-- Nopeimmat (paikalliset) ajat esitellään pelin lopussa
 - Graafisen ilmeen parantaminen

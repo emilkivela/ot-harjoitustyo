@@ -16,3 +16,8 @@
 - Testattu, että seinien läpi ei voi kävellä
 - Lisätty TextBox-luokka
 - Lisätty ominaisuus käyttäjänimen syöttämiselle
+
+## Viikko 6
+- Lisätty juokseva sekuntikello pitämään aikaa pelissä
+- Lisätty tietokanta joka tallentaa pelaajan käyttäjänimen ja peliajan
+- Lisätty loppunäyttöön scoreboard

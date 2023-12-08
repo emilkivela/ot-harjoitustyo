@@ -12,4 +12,5 @@
 | 2.12  | 1    | lisää testejä |
 | 5.12  | 4    | pelaajanimen lisääminen |
 | 7.12  | 1    | docstring |
-|       | 22   | yhteensä
+| 8.12  | 3    | tietokannan lisääminen, scoreboard |
+|       | 25   | yhteensä

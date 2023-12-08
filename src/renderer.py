@@ -85,16 +85,29 @@ class Renderer():
         pygame.draw.rect(self._display, textbox.color, textbox.box, 2)
         pygame.display.update()
 
-    def render_game_over(self, username):
-        """Renders the game over screen after death
+    def render_game_over(self, username, data):
+        """Renders the game over screen and the scoreboard of players and their times.
 
         Args:
             username (text): The username that was inputted in main menu
         """
         font = load_font('Acer710_CGA.woff', 20)
+        board = []
+        for row in data:
+            board.append((row[0], row[1]))
         self._display.fill((0, 0, 0))
         death = font.render('Game Over', True, (255, 255, 255))
         name = font.render(f"Player: {username}", True, (255, 255, 255))
-        self._display.blit(death, (200,200))
-        self._display.blit(name, (200, 250))
+        score = font.render(str(board), True, (255,255,255))
+        self._display.blit(death, (200,0))
+        self._display.blit(name, (200, 50))
+        y = 125
+        scoreboard = font.render('Scoreboard:', True, (255, 255, 255))
+        self._display.blit(scoreboard, (200, 100))
+        for i in range(len(board)):
+            score = font.render(f"{i+1}. {board[i][0]} : {board[i][1]}s", True, (255,255,255))
+            self._display.blit(score, (200,y))
+            y += 25
+            if i == 9:
+                break
         pygame.display.update()
