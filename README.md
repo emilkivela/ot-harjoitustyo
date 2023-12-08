@@ -5,7 +5,7 @@ vihollisille
 
 ### Käyttöohje
 1. Asenna riippuvuudet komennolla ``` poetry install ```
-2. Alusta tietokanta kommenoolla ``` poetry run invoke build ```
+2. Alusta tietokanta kommennolla ``` poetry run invoke build ```
 3. Käynnistä peli komennolla ``` poetry run invoke start ```
 
 ### Testit
