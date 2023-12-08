@@ -1,5 +1,6 @@
 import pygame
 from load_font import load_font
+import datetime
 
 
 class Renderer():
@@ -19,16 +20,25 @@ class Renderer():
         self._display = display
         self._level = level
 
-    def render(self):
-        """Renders all the sprite objects contained in a level
+    def render(self, seconds):
+        """Renders all the sprite objects contained in a level and a running clock.
         """
         self._level.all_sprites.draw(self._display)
+        font = load_font('Acer710_CGA.woff', 15)
+        timer = str(datetime.timedelta(seconds=seconds))
+        time = font.render(timer, True, (224, 224, 224))
+        self._display.blit(time, (100, 6))
+        w = time.get_width()
+        h = time.get_height()
+        border = pygame.Rect(98, 4, w+4, h+4)
+        pygame.draw.rect(self._display, (224,224,224), border, 1)
         pygame.display.update()
 
     def render_healthbar(self):
         """REnders and updates the players healthbar
         """
         self._display.blit(self._level.healthbar.image, (0, 0))
+        
         pygame.display.update()
 
     def shoot_projectile(self):

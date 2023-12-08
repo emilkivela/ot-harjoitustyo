@@ -1,6 +1,6 @@
 import pygame
 from textbox import TextBox
-
+import time
 HIT_COOLDOWN = pygame.USEREVENT
 HIT_COOLDOWN_ENEMY = pygame.USEREVENT + 1
 
@@ -18,6 +18,7 @@ class GameLoop:
         self._right = False
         self._up = False
         self._down = False
+        self.start_time = 0
 
     def start(self):
         while True:
@@ -35,6 +36,7 @@ class GameLoop:
                 self._renderer.render_game_over(self.textbox.text)
 
             self._clock.tick(60)
+            str(int(time.time()-self.start_time))
 
     def _handle_events(self):
 
@@ -56,6 +58,7 @@ class GameLoop:
                     self.textbox.write(event)
 
                 if event.key == pygame.K_RETURN:
+                    self.start_time = time.time()
                     self._game_state = "game"
 
                 if event.key == pygame.K_LEFT:
@@ -111,6 +114,6 @@ class GameLoop:
                 self._game_state = "game_over"
 
     def _render(self):
-        self._renderer.render()
+        self._renderer.render(int(time.time()-self.start_time))
         self._renderer.render_healthbar()
         self._renderer.shoot_projectile()
