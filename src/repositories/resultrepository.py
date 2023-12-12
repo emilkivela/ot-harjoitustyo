@@ -1,4 +1,4 @@
-
+from connect_db import get_db_connection
 class ResultRepository():
     def __init__(self, connection):
         self._connection = connection
@@ -15,3 +15,10 @@ class ResultRepository():
         cursor.execute(sql)
         rows = cursor.fetchall()
         return rows
+    
+    def delete_all(self):
+        cursor = self._connection.cursor()
+        sql = 'DELETE FROM results'
+        cursor.execute(sql)
+        self._connection.commit()
+    

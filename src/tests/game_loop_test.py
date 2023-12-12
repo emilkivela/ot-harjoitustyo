@@ -27,6 +27,9 @@ class StubRenderer:
     def render(self):
         pass
 
+    def render_menu(self, textbox):
+        pass
+
     def render_healthbar(self):
         pass
 
@@ -63,3 +66,92 @@ class TestGameLoop(unittest.TestCase):
         game_loop.start()
         
         self.assertEqual(game_loop._game_state, "game")
+
+    def test_pressing_space_shoots_firebolt(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_SPACE), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(len(self.level.firebolt), 0)
+        game_loop.start()
+        self.assertEqual(len(self.level.firebolt), 1)
+    
+    def test_pressing_down_changes_direction(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_DOWN),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._down, False)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._down, True)
+        self.assertEqual(self.level.wizard.facing, "left")
+    
+    def test_pressing_up_changes_direction(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_UP),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._up, False)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._up, True)
+        self.assertEqual(self.level.wizard.facing, "left")
+    
+    def test_pressing_left_changes_direction(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_LEFT),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._left, False)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._left, True)
+        self.assertEqual(self.level.wizard.facing, "left")
+
+    def test_pressing_right_changes_direction(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_RIGHT),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._right, False)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._right, True)
+        self.assertEqual(self.level.wizard.facing, "left")
+
+    def test_lifting_up_resets_direction(self):
+        events = [StubEvent(pygame.KEYUP, pygame.K_UP), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        game_loop._up = True
+        self.assertEqual(game_loop._up, True)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._up, False)
+    
+    def test_lifting_down_resets_direction(self):
+        events = [StubEvent(pygame.KEYUP, pygame.K_DOWN), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        game_loop._down = True
+        self.assertEqual(game_loop._down, True)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._down, False)
+    
+    def test_lifting_left_resets_direction(self):
+        events = [StubEvent(pygame.KEYUP, pygame.K_LEFT), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        game_loop._left = True
+        self.assertEqual(game_loop._left, True)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._left, False)
+    
+    def test_lifting_right_resets_direction(self):
+        events = [StubEvent(pygame.KEYUP, pygame.K_RIGHT), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
+
+        game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        game_loop._right = True
+        self.assertEqual(game_loop._right, True)
+        game_loop.start()
+        
+        self.assertEqual(game_loop._right, False)
+

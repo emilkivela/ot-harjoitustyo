@@ -22,7 +22,7 @@ class GameLoop:
         self._down = False
         self.start_time = 0
         self.connection = get_db_connection()
-        self.resultrepo = ResultRepository(self.connection)
+        self.resultrepo = ResultRepository(get_db_connection())
 
     def start(self):
         while True:
