@@ -6,7 +6,7 @@ from entities.wall import Brick
 from entities.door import Door
 from entities.healthbar import HealthBar
 from entities.firebolt import Firebolt
-from entities.game_loop import HIT_COOLDOWN, HIT_COOLDOWN_ENEMY
+from game.game_loop import HIT_COOLDOWN, HIT_COOLDOWN_ENEMY
 from services.load_image import load_image
 HEALTHBARS = [load_image("0hearts.png"), load_image("1heart.png"),
               load_image("2hearts.png"), load_image("3hearts.png")]

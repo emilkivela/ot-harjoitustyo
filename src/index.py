@@ -1,9 +1,9 @@
 import pygame
 from entities.eventqueue import EventQueue
-from entities.game_loop import GameLoop
+from game.game_loop import GameLoop
 from entities.clock import Clock
-from entities.renderer import Renderer
-from entities.level import Level
+from game.renderer import Renderer
+from game.level import Level
 
 LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
               [1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],

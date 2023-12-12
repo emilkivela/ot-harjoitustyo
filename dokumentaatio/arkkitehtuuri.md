@@ -1,9 +1,28 @@
+# Arkkitehtuurikuvaus
+
+## Rakenne
+![Pakkauskaavio](./kuvat/package_diagram.png)
+Kansion *game* sisällä oleva koodi huolehtii itse pelistä ja sen 
+käyttöliittymästä, kansio *entities* sisältää luokkia joita peli käytättää, kuten
+spritet, *services* sisältäää yleisiä tarpeellisia funktioita ja *repositories*
+huolehtii tietokannasta.
+
+## Käyttöliittymä
+Pelissä on kolme erilaista näkymää:
+- Aloitusnäyttö, jossa voi asettaa käyttäjänimen sekä jossa ohjeet kontrolleihin
+- Itse peli
+- Lopetusnäyttö, kun pelaaja kuolee, näyttää pelaaja nimen sekä scoreboardin
+
+## Sovelluslogiikka
+Seuraavassa luokkakaaviossa esitellään pelin luokkien riippuvuudet
+
 ```mermaid
  classDiagram
     GameLoop "1" -- "1" Level
     GameLoop "1" -- "1" Clock
     GameLoop "1" -- "1" EventQueue
     GameLoop "1" -- "1" Renderer
+    Renderer "1" -- "1" TextBox
     Level "1" -- "1" Wizard
     class Wizard {
         health
@@ -18,7 +37,9 @@
     Level "1" -- "*" Brick
     Level "1" -- "*" Door
 ```
-## Velhon liikuttaminen - sekvenssikaavio
+## Toiminnallisuudet
+
+### Velhon liikuttaminen - sekvenssikaavio
 ```mermaid
 sequenceDiagram
     participant User

@@ -13,4 +13,6 @@
 | 5.12  | 4    | pelaajanimen lisääminen |
 | 7.12  | 1    | docstring |
 | 8.12  | 3    | tietokannan lisääminen, scoreboard |
-|       | 25   | yhteensä
+| 12.12 | 2    | tiedostojen refaktorointi |
+| 12.12 | 1    | dokumentaation päivittäminen |
+|       | 28   | yhteensä

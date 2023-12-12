@@ -35,7 +35,7 @@ class Renderer():
         pygame.display.update()
 
     def render_healthbar(self):
-        """REnders and updates the players healthbar
+        """Renders and updates the players healthbar
         """
         self._display.blit(self._level.healthbar.image, (0, 0))
         
