@@ -6,7 +6,7 @@ Tietokanta luodaan automaattisesti *src*-hakemistoon, jos sitä ei ole vielä ol
 Tiedoston muoto on seuraavanlainen:
 ```
 DATABASE_FILENAME=database.db
-
+```
 ## Ohjelman käynnistäminen
 Asenna riippuvuudet komennolla:
 ```
