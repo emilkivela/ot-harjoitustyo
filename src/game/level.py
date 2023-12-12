@@ -47,7 +47,8 @@ class Level:
         self.wizard.rect.move_ip(dx, dy)
 
     def _player_can_move(self, dx=0, dy=0):
-        """Checks if the player can move in the wanted direction or if it collides with objects (such as walls)
+        """Checks if the player can move in the wanted direction,
+           or if it collides with objects (such as walls)
 
         Args:
             dx (int, optional): The wanted place to move the player on the x-axis. Defaults to 0.
@@ -94,6 +95,7 @@ class Level:
                 self.move_player(dx=32)
             if self.wizard.facing == "right":
                 self.move_player(dx=-32)
+        return False
 
     def shoot_projectile(self):
         """Shoots the fireball in the direction the player is facing

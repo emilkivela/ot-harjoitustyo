@@ -1,7 +1,8 @@
 import pygame
 from entities.eventqueue import EventQueue
-from game.game_loop import GameLoop
 from entities.clock import Clock
+
+from game.game_loop import GameLoop
 from game.renderer import Renderer
 from game.level import Level
 

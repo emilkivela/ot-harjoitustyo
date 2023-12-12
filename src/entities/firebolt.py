@@ -6,7 +6,8 @@ class Firebolt(pygame.sprite.Sprite):
     """A class to handle the fireballs that player shoots
 
     Args:
-        pygame (pygame.sprite.Sprite): Inherits pygame sprite object so pygame knows how to handle it.
+        pygame (pygame.sprite.Sprite):
+        Inherits pygame sprite object so pygame knows how to handle it.
     """
     def __init__(self, x, y, facing: str):
         """Constructor that creates the Fireball-object.

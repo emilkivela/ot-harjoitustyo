@@ -1,6 +1,6 @@
+import time
 import pygame
 from entities.textbox import TextBox
-import time
 from repositories.resultrepository import ResultRepository
 from connect_db import get_db_connection
 HIT_COOLDOWN = pygame.USEREVENT
@@ -21,6 +21,7 @@ class GameLoop:
         self._up = False
         self._down = False
         self.start_time = 0
+        self.scoreboard = ''
         self.connection = get_db_connection()
         self.resultrepo = ResultRepository(get_db_connection())
 
@@ -37,7 +38,7 @@ class GameLoop:
                 self._render()
 
             if self._game_state == "game_over":
-                
+
                 self._renderer.render_game_over(self.textbox.text, self.scoreboard)
 
             self._clock.tick(60)
@@ -120,6 +121,8 @@ class GameLoop:
                 self.resultrepo.save_info(self.textbox.text, int(time.time()-self.start_time))
                 self.scoreboard = self.resultrepo.get_scoreboard()
                 self._game_state = "game_over"
+
+        return True
 
     def _render(self):
         self._renderer.render(int(time.time()-self.start_time))

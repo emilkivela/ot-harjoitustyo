@@ -6,7 +6,8 @@ class Brick(pygame.sprite.Sprite):
     """Class to handle the wall texture sprites
 
     Args:
-        pygame (pygame.sprite.Sprite): Inherits the pygame sprite class so pygame knows how to handle it correctly
+        pygame (pygame.sprite.Sprite):
+        Inherits the pygame sprite class so pygame knows how to handle it correctly
     """
     def __init__(self, x=0, y=0):
         """Constructor that creates the Brick object

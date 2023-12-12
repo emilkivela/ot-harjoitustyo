@@ -1,6 +1,7 @@
+import datetime
 import pygame
 from services.load_font import load_font
-import datetime
+
 
 
 class Renderer():
@@ -8,14 +9,18 @@ class Renderer():
 
     Attributes: 
         display: Pygame display to draw on
-        level: Level-class, that has information of the current level and the sprites that should be rendered
+        level: Level-class, that has information of the current level
+        and the sprites that should be rendered
     """
     def __init__(self, display, level):
         """Class constructor, which creates the Renderer-object 
 
         Args:
-            display (pygame display): Pygame display that is defined in index.py
-            level (Level()): Level-object that contains the information for the current level and its sprites
+            display (pygame display): 
+            Pygame display that is defined in index.py
+            
+            level (Level()):
+                Level-object that contains the information for the current level and its sprites
         """
         self._display = display
         self._level = level
@@ -38,11 +43,12 @@ class Renderer():
         """Renders and updates the players healthbar
         """
         self._display.blit(self._level.healthbar.image, (0, 0))
-        
+
         pygame.display.update()
 
     def shoot_projectile(self):
-        """Renders the shot fireball to the direction faced. Makes sure there are only 3 fireballs at a time
+        """Renders the shot fireball to the direction faced.
+           Makes sure there are only 3 fireballs at a time
         """
         self._level.firebolt.draw(self._display)
         for firebolt in self._level.firebolt:
@@ -64,10 +70,12 @@ class Renderer():
 
 
     def render_menu(self, textbox):
-        """Renders the main menu before the actual game is started, its text and the username input
+        """Renders the main menu before the actual game is started,
+           its text and the username input
 
         Args:
-            textbox (TextBox()): Object that is responsible for inputting the players username
+            textbox (TextBox()):
+            Object that is responsible for inputting the players username
         """
         font = load_font('Acer710_CGA.woff', 20)
         self._display.fill((0, 0, 0))

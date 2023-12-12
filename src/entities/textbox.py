@@ -23,7 +23,8 @@ class TextBox():
         """Checks if the user clicks the textbox to activate it
 
         Args:
-            event (pygame.MOUSEBUTTONDOWN): The method is feeded pygame events when a mouse button is pressed
+            event (pygame.MOUSEBUTTONDOWN): 
+            The method is feeded pygame events when a mouse button is pressed
         """
         if self.box.collidepoint(event.pos):
             self.active = not self.active

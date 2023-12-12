@@ -6,7 +6,8 @@ class Wizard(pygame.sprite.Sprite):
     """Object for handling the player controlled sprite
 
     Args:
-        pygame (pygame.sprite.Sprite): Inherits the pygame sprite class so pygame knows how to handle it correctly
+        pygame (pygame.sprite.Sprite): 
+        Inherits the pygame sprite class so pygame knows how to handle it correctly
     """
     def __init__(self, x=0, y=0):
         """Constructor, creates the Wizard object
