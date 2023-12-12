@@ -1,13 +1,13 @@
 import pygame
-from wizard import Wizard
-from skeleton import Skeleton
-from floor import Cobble
-from wall import Brick
-from door import Door
-from healthbar import HealthBar
-from firebolt import Firebolt
-from game_loop import HIT_COOLDOWN, HIT_COOLDOWN_ENEMY
-from load_image import load_image
+from entities.wizard import Wizard
+from entities.skeleton import Skeleton
+from entities.floor import Cobble
+from entities.wall import Brick
+from entities.door import Door
+from entities.healthbar import HealthBar
+from entities.firebolt import Firebolt
+from entities.game_loop import HIT_COOLDOWN, HIT_COOLDOWN_ENEMY
+from services.load_image import load_image
 HEALTHBARS = [load_image("0hearts.png"), load_image("1heart.png"),
               load_image("2hearts.png"), load_image("3hearts.png")]
 

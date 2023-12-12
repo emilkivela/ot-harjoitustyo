@@ -1,7 +1,7 @@
 import pygame
-from textbox import TextBox
+from entities.textbox import TextBox
 import time
-from resultrepository import ResultRepository
+from repositories.resultrepository import ResultRepository
 from connect_db import get_db_connection
 HIT_COOLDOWN = pygame.USEREVENT
 HIT_COOLDOWN_ENEMY = pygame.USEREVENT + 1
@@ -42,6 +42,7 @@ class GameLoop:
 
             self._clock.tick(60)
             str(int(time.time()-self.start_time))
+        pygame.quit()
 
     def _handle_events(self):
 

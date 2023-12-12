@@ -1,5 +1,5 @@
 import unittest
-from level import Level
+from entities.level import Level
 
 
 LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

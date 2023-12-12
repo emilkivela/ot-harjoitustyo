@@ -1,15 +1,15 @@
 import pygame
-from load_image import load_image
+from services.load_image import load_image
 
 
-class Cobble(pygame.sprite.Sprite):
-    """Class to handle the cobblestone texture sprites
+class Brick(pygame.sprite.Sprite):
+    """Class to handle the wall texture sprites
 
     Args:
         pygame (pygame.sprite.Sprite): Inherits the pygame sprite class so pygame knows how to handle it correctly
     """
     def __init__(self, x=0, y=0):
-        """Constructor that creates the Cobble object
+        """Constructor that creates the Brick object
 
         Args:
             x (int, optional): X-coordinates for the brick sprite. Defaults to 0.
@@ -17,7 +17,7 @@ class Cobble(pygame.sprite.Sprite):
         """
         super().__init__()
 
-        self.image = load_image("cobble.png")
+        self.image = load_image("brick.png")
 
         self.rect = self.image.get_rect()
         self.rect.x = x

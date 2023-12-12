@@ -1,5 +1,5 @@
 import pygame
-from load_image import load_image
+from services.load_image import load_image
 
 class HealthBar(pygame.sprite.Sprite):
     """A class to manage the players healthbar and loads the initial healthbar image

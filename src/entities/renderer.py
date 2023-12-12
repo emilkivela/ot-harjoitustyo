@@ -1,5 +1,5 @@
 import pygame
-from load_font import load_font
+from services.load_font import load_font
 import datetime
 
 

@@ -1,5 +1,5 @@
 import pygame
-from load_image import load_image
+from services.load_image import load_image
 
 class Skeleton(pygame.sprite.Sprite):
     """Object to take care of the skeleton-type enemies

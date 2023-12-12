@@ -1,9 +1,9 @@
 import pygame
-from eventqueue import EventQueue
-from game_loop import GameLoop
-from clock import Clock
-from renderer import Renderer
-from level import Level
+from entities.eventqueue import EventQueue
+from entities.game_loop import GameLoop
+from entities.clock import Clock
+from entities.renderer import Renderer
+from entities.level import Level
 
 LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
               [1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -35,7 +35,7 @@ def main():
 
     pygame.init()
     game_loop.start()
-
+    pygame.quit()
 
 if __name__ == "__main__":
     main()
