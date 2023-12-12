@@ -15,4 +15,5 @@
 | 8.12  | 3    | tietokannan lisääminen, scoreboard |
 | 12.12 | 2    | tiedostojen refaktorointi |
 | 12.12 | 1    | dokumentaation päivittäminen |
-|       | 28   | yhteensä
+| 12.12 | 1    | testit |
+|       | 29   | yhteensä
