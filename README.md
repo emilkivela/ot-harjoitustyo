@@ -26,5 +26,5 @@ Pylint-testit voi suorittaa komennolla ``` poetry run invoke lint ```
 - [Fontit](https://int10h.org/oldschool-pc-fonts/download/)
 
 ## Releaset
-- [Viikko 5(https://github.com/emilkivela/ot-harjoitustyo/archive/refs/tags/viikko5.zip)
+- [Viikko 5](https://github.com/emilkivela/ot-harjoitustyo/archive/refs/tags/viikko5.zip)
 - [Viikko 6](https://github.com/emilkivela/ot-harjoitustyo/archive/refs/tags/viikko6.zip)
