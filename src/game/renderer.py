@@ -12,7 +12,7 @@ class Renderer():
         level: Level-class, that has information of the current level
         and the sprites that should be rendered
     """
-    def __init__(self, display, level):
+    def __init__(self, display):
         """Class constructor, which creates the Renderer-object 
 
         Args:
@@ -23,12 +23,11 @@ class Renderer():
                 Level-object that contains the information for the current level and its sprites
         """
         self._display = display
-        self._level = level
 
-    def render(self, seconds):
+    def render(self,level, seconds):
         """Renders all the sprite objects contained in a level and a running clock.
         """
-        self._level.all_sprites.draw(self._display)
+        level.all_sprites.draw(self._display)
         font = load_font('Acer710_CGA.woff', 15)
         timer = str(datetime.timedelta(seconds=seconds))
         time = font.render(timer, True, (224, 224, 224))
@@ -39,19 +38,19 @@ class Renderer():
         pygame.draw.rect(self._display, (224,224,224), border, 1)
         pygame.display.update()
 
-    def render_healthbar(self):
+    def render_healthbar(self, level):
         """Renders and updates the players healthbar
         """
-        self._display.blit(self._level.healthbar.image, (0, 0))
+        self._display.blit(level.healthbar.image, (0, 0))
 
         pygame.display.update()
 
-    def shoot_projectile(self):
+    def shoot_projectile(self, level):
         """Renders the shot fireball to the direction faced.
            Makes sure there are only 3 fireballs at a time
         """
-        self._level.firebolt.draw(self._display)
-        for firebolt in self._level.firebolt:
+        level.firebolt.draw(self._display)
+        for firebolt in level.firebolt:
             if firebolt.facing == "left":
                 firebolt.rect.move_ip(-3, 0)
             if firebolt.facing == "right":
@@ -60,10 +59,10 @@ class Renderer():
                 firebolt.rect.move_ip(0, -3)
             if firebolt.facing == "down":
                 firebolt.rect.move_ip(0, 3)
-            if self._level.projectile_colliding_walls(firebolt):
+            if level.projectile_colliding_walls(firebolt):
                 firebolt.kill()
-            self._level.projectile_colliding_enemy(firebolt)
-            while len(self._level.firebolt) > 3:
+            level.projectile_colliding_enemy(firebolt)
+            while len(level.firebolt) > 3:
                 firebolt.kill()
 
         pygame.display.update()

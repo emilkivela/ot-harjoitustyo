@@ -8,8 +8,10 @@ HIT_COOLDOWN_ENEMY = pygame.USEREVENT + 1
 
 
 class GameLoop:
-    def __init__(self, level, renderer, eventqueue, clock, cell_size):
-        self._level = level
+    def __init__(self, levels, renderer, eventqueue, clock, cell_size):
+        self._levels = levels
+        self._level_number = 0
+        self._level = self._levels[self._level_number]
         self._clock = clock
         self._eventqueue = eventqueue
         self._cell_size = cell_size
@@ -121,10 +123,15 @@ class GameLoop:
                 self.resultrepo.save_info(self.textbox.text, int(time.time()-self.start_time))
                 self.scoreboard = self.resultrepo.get_scoreboard()
                 self._game_state = "game_over"
+            if self._level.check_level_change():
+                self._level_number += 1
+                if self._level_number <= len(self._levels)-1:
+                    self._level = self._levels[self._level_number]
+                print(self._level_number)
 
         return True
 
     def _render(self):
-        self._renderer.render(int(time.time()-self.start_time))
-        self._renderer.render_healthbar()
-        self._renderer.shoot_projectile()
+        self._renderer.render(self._level, int(time.time()-self.start_time))
+        self._renderer.render_healthbar(self._level)
+        self._renderer.shoot_projectile(self._level)

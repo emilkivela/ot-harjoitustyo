@@ -14,4 +14,4 @@ def load_font(filename, font_size):
     Returns:
         pygame.font.Font: pygame font object with the given custom font and font size
     """
-    return pygame.font.Font(os.path.join(dirname, "..", "fonts", filename), font_size)
+    return pygame.font.Font(os.path.join(dirname, "..", "assets", filename), font_size)

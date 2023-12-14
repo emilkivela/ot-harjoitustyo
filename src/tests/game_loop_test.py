@@ -56,7 +56,7 @@ CELL_SIZE = 32
 
 class TestGameLoop(unittest.TestCase):
     def setUp(self):
-        self.level = Level(LEVEL_ROOM, CELL_SIZE)
+        self.level = [Level(LEVEL_ROOM, CELL_SIZE)]
     
     def test_enter_changes_game_state(self):
         events = [StubEvent(pygame.KEYDOWN, pygame.K_RETURN), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
@@ -71,9 +71,9 @@ class TestGameLoop(unittest.TestCase):
         events = [StubEvent(pygame.KEYDOWN, pygame.K_SPACE), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
 
         game_loop = GameLoop(self.level, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
-        self.assertEqual(len(self.level.firebolt), 0)
+        self.assertEqual(len(game_loop._level.firebolt), 0)
         game_loop.start()
-        self.assertEqual(len(self.level.firebolt), 1)
+        self.assertEqual(len(game_loop._level.firebolt), 1)
     
     def test_pressing_down_changes_direction(self):
         events = [StubEvent(pygame.KEYDOWN, pygame.K_DOWN),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
@@ -83,7 +83,7 @@ class TestGameLoop(unittest.TestCase):
         game_loop.start()
         
         self.assertEqual(game_loop._down, True)
-        self.assertEqual(self.level.wizard.facing, "left")
+        self.assertEqual(game_loop._level.wizard.facing, "left")
     
     def test_pressing_up_changes_direction(self):
         events = [StubEvent(pygame.KEYDOWN, pygame.K_UP),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
@@ -93,7 +93,7 @@ class TestGameLoop(unittest.TestCase):
         game_loop.start()
         
         self.assertEqual(game_loop._up, True)
-        self.assertEqual(self.level.wizard.facing, "left")
+        self.assertEqual(game_loop._level.wizard.facing, "left")
     
     def test_pressing_left_changes_direction(self):
         events = [StubEvent(pygame.KEYDOWN, pygame.K_LEFT),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
@@ -103,7 +103,7 @@ class TestGameLoop(unittest.TestCase):
         game_loop.start()
         
         self.assertEqual(game_loop._left, True)
-        self.assertEqual(self.level.wizard.facing, "left")
+        self.assertEqual(game_loop._level.wizard.facing, "left")
 
     def test_pressing_right_changes_direction(self):
         events = [StubEvent(pygame.KEYDOWN, pygame.K_RIGHT),StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
@@ -113,7 +113,7 @@ class TestGameLoop(unittest.TestCase):
         game_loop.start()
         
         self.assertEqual(game_loop._right, True)
-        self.assertEqual(self.level.wizard.facing, "left")
+        self.assertEqual(game_loop._level.wizard.facing, "left")
 
     def test_lifting_up_resets_direction(self):
         events = [StubEvent(pygame.KEYUP, pygame.K_UP), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]

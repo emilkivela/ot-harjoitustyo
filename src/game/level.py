@@ -96,6 +96,11 @@ class Level:
             if self.wizard.facing == "right":
                 self.move_player(dx=-32)
         return False
+    
+    def check_level_change(self):
+        if pygame.sprite.spritecollide(self.wizard, self.door, False):
+            return True
+        return False
 
     def shoot_projectile(self):
         """Shoots the fireball in the direction the player is facing

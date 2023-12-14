@@ -27,22 +27,22 @@ class TestRenderer(unittest.TestCase):
         self._display = pygame.display.set_mode((640, 480))
     
     def test_no_more_than_3_fireballs(self):
-        renderer = Renderer(self._display, self._level)
+        renderer = Renderer(self._display)
         
         self._level.shoot_projectile()
-        renderer.shoot_projectile()
+        renderer.shoot_projectile(self._level)
         self.assertEqual(len(self._level.firebolt), 1)
       
         self._level.shoot_projectile()
-        renderer.shoot_projectile()
+        renderer.shoot_projectile(self._level)
         self.assertEqual(len(self._level.firebolt), 2)
 
         self._level.shoot_projectile()
-        renderer.shoot_projectile()
+        renderer.shoot_projectile(self._level)
         self.assertEqual(len(self._level.firebolt), 3)
         
         self._level.shoot_projectile()
-        renderer.shoot_projectile()
+        renderer.shoot_projectile(self._level)
         self.assertEqual(len(self._level.firebolt), 3)
         
                                                

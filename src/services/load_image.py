@@ -13,4 +13,4 @@ def load_image(filename):
     Returns:
         _type_: pygame function that loads the given image
     """
-    return pygame.image.load(os.path.join(dirname, "..", "sprites", filename))
+    return pygame.image.load(os.path.join(dirname, "..", "assets", filename))
