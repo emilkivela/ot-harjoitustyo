@@ -27,6 +27,7 @@ class Renderer():
     def render(self,level, seconds):
         """Renders all the sprite objects contained in a level and a running clock.
         """
+        self._display.fill(pygame.Color('black'))
         level.all_sprites.draw(self._display)
         font = load_font('Acer710_CGA.woff', 15)
         timer = str(datetime.timedelta(seconds=seconds))

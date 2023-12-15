@@ -1,4 +1,5 @@
 import pygame
+
 from entities.wizard import Wizard
 from entities.skeleton import Skeleton
 from entities.floor import Cobble
@@ -6,8 +7,12 @@ from entities.wall import Brick
 from entities.door import Door
 from entities.healthbar import HealthBar
 from entities.firebolt import Firebolt
+from entities.switch import Switch
+
 from game.game_loop import HIT_COOLDOWN, HIT_COOLDOWN_ENEMY
+
 from services.load_image import load_image
+
 HEALTHBARS = [load_image("0hearts.png"), load_image("1heart.png"),
               load_image("2hearts.png"), load_image("3hearts.png")]
 
@@ -26,7 +31,8 @@ class Level:
         self.wizard = None
         self.walls = pygame.sprite.Group()
         self.floors = pygame.sprite.Group()
-        self.door = pygame.sprite.Group()
+        self.doors = pygame.sprite.Group()
+        self.switch = pygame.sprite.Group()
         self.skeletons = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
         self.firebolt = pygame.sprite.Group()
@@ -60,12 +66,22 @@ class Level:
         self.wizard.rect.move_ip(dx, dy)
 
         colliding_walls = pygame.sprite.spritecollide(self.wizard, self.walls, False)
-
+        
         can_move = not colliding_walls
+
+        if pygame.sprite.spritecollide(self.wizard, self.doors, False) and not self.doors_open():
+            can_move = False
 
         self.wizard.rect.move_ip(-dx, -dy)
 
         return can_move
+
+    def switch_collision(self):
+        if pygame.sprite.spritecollide(self.wizard, self.switch, False):
+            for door in self.doors:
+                door.open = True
+            return True
+        return False
 
     def get_colliding_enemies(self, sprite):
         """Checks if the player collides with enemies,
@@ -97,8 +113,14 @@ class Level:
                 self.move_player(dx=-32)
         return False
     
+    def doors_open(self):
+        for door in self.doors:
+            if not door.open:
+                return False
+        return True
+
     def check_level_change(self):
-        if pygame.sprite.spritecollide(self.wizard, self.door, False):
+        if pygame.sprite.spritecollide(self.wizard, self.doors, False) and self.doors_open():
             return True
         return False
 
@@ -162,12 +184,16 @@ class Level:
                 elif cell == 1:
                     self.walls.add(Brick(normalized_x, normalized_y))
                 elif cell == 2:
-                    self.door.add(Door(normalized_x, normalized_y))
+                    self.doors.add(Door(normalized_x, normalized_y))
                 elif cell == 3:
                     self.wizard = Wizard(normalized_x, normalized_y)
                     self.floors.add(Cobble(normalized_x, normalized_y))
                 elif cell == 4:
                     self.floors.add(Cobble(normalized_x, normalized_y))
                     self.skeletons.add(Skeleton(normalized_x, normalized_y))
-
-        self.all_sprites.add(self.floors, self.walls, self.door, self.wizard, self.skeletons)
+                elif cell == 5:
+                    self.switch.add(Switch(normalized_x, normalized_y))
+                    self.floors.add(Cobble(normalized_x, normalized_y))
+        #self.walls.add(self.doors)
+        self.all_sprites.add(self.floors, self.walls, self.doors,
+                              self.switch, self.skeletons, self.wizard)

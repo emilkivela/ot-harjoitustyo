@@ -9,3 +9,11 @@ class Door(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.open = False
+
+    def update(self):
+        if self.open:
+            self.image = load_image("dngn_open_door.png")
+        else:
+            self.image = load_image("dngn_closed_door.png")
+

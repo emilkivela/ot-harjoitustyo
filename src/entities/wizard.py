@@ -17,10 +17,16 @@ class Wizard(pygame.sprite.Sprite):
             y (int, optional): Y-coordinates for the Wizard. Defaults to 0.
         """
         super().__init__()
-        self.image = load_image("wizard.png")
+        self.image = load_image("wizard_left.png")
         self.cooldown = False
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
         self.facing = "left"
         self.health = 3
+
+    def update(self):
+        if self.facing == "left":
+            self.image = load_image("wizard_left.png")
+        if self.facing == "right":
+            self.image = load_image("wizard_right.png")

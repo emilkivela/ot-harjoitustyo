@@ -117,17 +117,21 @@ class GameLoop:
         if self._down:
             self._level.wizard.facing = "down"
             self._level.move_player(dy=2)
+        self._level.wizard.update()
 
         if self._game_state == "game":
             if self._level.get_colliding_enemies(self._level.wizard):
                 self.resultrepo.save_info(self.textbox.text, int(time.time()-self.start_time))
                 self.scoreboard = self.resultrepo.get_scoreboard()
                 self._game_state = "game_over"
+
             if self._level.check_level_change():
                 self._level_number += 1
                 if self._level_number <= len(self._levels)-1:
                     self._level = self._levels[self._level_number]
-                print(self._level_number)
+
+            if self._level.switch_collision():
+                self._level.doors.update()
 
         return True
 
