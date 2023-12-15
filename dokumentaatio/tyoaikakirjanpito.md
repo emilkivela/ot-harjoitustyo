@@ -16,4 +16,6 @@
 | 12.12 | 2    | tiedostojen refaktorointi |
 | 12.12 | 1    | dokumentaation päivittäminen |
 | 12.12 | 1    | testit |
-|       | 29   | yhteensä
+| 14.12 | 3    | useamman tason lisääminen |
+| 15.12 | 2    | napin lisääminen oven avaamiseksi, kuvien päivittäminen |
+|       | 34   | yhteensä

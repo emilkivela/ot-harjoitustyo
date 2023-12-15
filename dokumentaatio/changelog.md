@@ -21,3 +21,10 @@
 - Lisätty juokseva sekuntikello pitämään aikaa pelissä
 - Lisätty tietokanta joka tallentaa pelaajan käyttäjänimen ja peliajan
 - Lisätty loppunäyttöön scoreboard
+
+## Viikko 7
+- Lisätty Switch-luokka
+- Nappia painamalla ovi avautuu
+- Lisätty useita tasoja
+- Osumalla avautuneeseen oveen taso vaihtuu
+- Velhon kuva vaihtuu riippuen mihin suuntaan se kulkee
