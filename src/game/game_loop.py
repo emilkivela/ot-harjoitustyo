@@ -16,7 +16,7 @@ class GameLoop:
         self._eventqueue = eventqueue
         self._cell_size = cell_size
         self._renderer = renderer
-        self.textbox = TextBox(0, 40, 100, 35)
+        self.textbox = TextBox(10, 40, 100, 35)
         self._game_state = "main_menu"
         self._left = False
         self._right = False

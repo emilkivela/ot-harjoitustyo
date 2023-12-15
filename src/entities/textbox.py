@@ -13,8 +13,8 @@ class TextBox():
             h (int): Height of the box
         """
         self.box = pygame.Rect(x, y, w, h)
-        self.passive_color = pygame.Color(105, 105, 105)
-        self.active_color = pygame.Color(169, 169, 169)
+        self.passive_color = pygame.Color(224, 224, 224)
+        self.active_color = pygame.Color(0, 240, 0)
         self.color = self.passive_color
         self.active = False
         self.text = ''
@@ -41,7 +41,8 @@ class TextBox():
         if event.key == pygame.K_BACKSPACE:
             self.text = self.text[:-1]
         else:
-            self.text += event.unicode
+            if len(self.text) <= 12:
+                self.text += event.unicode
 
     def change_color(self):
         """Changes the color of the textbox depending if its active or not
