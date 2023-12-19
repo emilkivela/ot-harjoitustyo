@@ -2,6 +2,7 @@ import pygame
 import unittest
 from game.level import Level
 from game.renderer import Renderer
+from entities.textbox import TextBox
 
 LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
               [1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -44,5 +45,6 @@ class TestRenderer(unittest.TestCase):
         self._level.shoot_projectile()
         renderer.shoot_projectile(self._level)
         self.assertEqual(len(self._level.firebolt), 3)
-        
+
+
                                                

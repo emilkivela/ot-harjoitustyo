@@ -79,6 +79,7 @@ class Renderer():
         """
         font = load_font('Acer710_CGA.woff', 20)
         self._display.fill((0, 0, 0))
+
         text_surface = font.render(textbox.text, True, (255,255,255))
         start_button = font.render('Enter username and press ENTER', True, (255, 255, 255))
         movement_info = font.render('Arrows to move', True, (255, 255, 255))

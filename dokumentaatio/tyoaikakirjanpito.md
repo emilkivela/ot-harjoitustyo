@@ -18,4 +18,5 @@
 | 12.12 | 1    | testit |
 | 14.12 | 3    | useamman tason lisääminen |
 | 15.12 | 2    | napin lisääminen oven avaamiseksi, kuvien päivittäminen |
-|       | 34   | yhteensä
+| 19.12 | 1    | uusien testien luonti |
+|       | 35   | yhteensä
