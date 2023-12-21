@@ -19,4 +19,5 @@
 | 14.12 | 3    | useamman tason lisääminen |
 | 15.12 | 2    | napin lisääminen oven avaamiseksi, kuvien päivittäminen |
 | 19.12 | 1    | uusien testien luonti |
-|       | 35   | yhteensä
+| 21.12 | 1    | vihollisten liike |
+|       | 36   | yhteensä

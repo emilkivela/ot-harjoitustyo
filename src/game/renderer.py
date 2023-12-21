@@ -47,7 +47,7 @@ class Renderer():
         pygame.display.update()
 
     def shoot_projectile(self, level):
-        """Renders the shot fireball to the direction faced.
+        """Renders the shot firebolt to the direction faced.
            Makes sure there are only 3 fireballs at a time
         """
         level.firebolt.draw(self._display)
@@ -65,6 +65,14 @@ class Renderer():
             level.projectile_colliding_enemy(firebolt)
             while len(level.firebolt) > 3:
                 firebolt.kill()
+
+        level.firecloud.draw(self._display)
+        for cloud in level.firecloud:
+            cloud.rect.move_ip(3*cloud.target_x, 3*cloud.target_y)
+            if level.projectile_colliding_walls(cloud):
+                cloud.kill()
+            while len(level.firecloud)  > 3:
+                cloud.kill()
 
         pygame.display.update()
 
