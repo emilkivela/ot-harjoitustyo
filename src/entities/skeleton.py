@@ -17,8 +17,19 @@ class Skeleton(pygame.sprite.Sprite):
         """
         super().__init__()
         self.cooldown = False
-        self.image = load_image("skeleton.png")
+        self.image = load_image("skeleton_small.png")
         self.health = 2
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.previous_move_time = 0
+        self.aggro = False
+
+    def should_move(self, current_time):
+        return current_time - self.previous_move_time >= 2000
+
+    def update(self):
+        if self.aggro:
+            self.image = load_image("skeleton_big.png")
+        else:
+            self.image = load_image("skeleton_small.png")

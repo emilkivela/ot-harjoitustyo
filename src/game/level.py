@@ -1,4 +1,6 @@
 import pygame
+import random
+import math
 
 from entities.wizard import Wizard
 from entities.skeleton import Skeleton
@@ -48,9 +50,37 @@ class Level:
             dx (int, optional): How much the player is moved on the x-axis Defaults to 0.
             dy (int, optional): How much the player is moved on the y-axis. Defaults to 0.
         """
+        
         if not self._player_can_move(dx, dy):
             return
         self.wizard.rect.move_ip(dx, dy)
+    
+    def update_enemies(self, current_time):
+        pool = [-20, 0, 20]
+        for enemy in self.enemies:
+            if math.dist((self.wizard.rect.x, self.wizard.rect.y), (enemy.rect.x, enemy.rect.y)) < 150:
+                enemy.aggro = True
+            if enemy.aggro:
+                dx, dy = self.wizard.rect.x - enemy.rect.x, self.wizard.rect.y - enemy.rect.y
+                dist = math.hypot(dx, dy)
+                dx, dy = dx / dist, dy / dist
+                self.move_enemy(enemy, 1.5*dx, 1.5*dy)
+            else: 
+                if enemy.should_move(current_time):
+                    self.move_enemy(enemy, random.choice(pool), random.choice(pool))
+                    enemy.previous_move_time = current_time
+        self.enemies.update()
+    
+    def move_enemy(self, enemy, dx, dy):
+        if self.enemy_can_move(enemy, dx, dy):
+            enemy.rect.move_ip(dx, dy)
+
+    def enemy_can_move(self, enemy, dx, dy):
+        enemy.rect.move_ip(dx, dy)
+        colliding = pygame.sprite.spritecollide(enemy, self.walls, False)
+        can_move = not colliding
+        enemy.rect.move_ip(-dx, -dy)
+        return can_move
 
     def _player_can_move(self, dx=0, dy=0):
         """Checks if the player can move in the wanted direction,

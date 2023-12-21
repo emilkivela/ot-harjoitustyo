@@ -37,6 +37,8 @@ class GameLoop:
                 self._renderer.render_menu(self.textbox)
 
             if self._game_state == "game":
+                current_time = self._clock.get_ticks()
+                self._level.update_enemies(current_time)
                 self._render()
 
             if self._game_state == "game_over":
