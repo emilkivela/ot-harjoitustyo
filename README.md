@@ -1,4 +1,4 @@
-# Ohjelmistotekniikka, harjoitustyö
+# Dungeon Crawler
 Legend of Zelda-inspitoitunut dungeon crawler-peli, joka on toteutettu pygamella. Tällä hetkellä peli piirtä yhden kartan ja pelaaja voi liikutella siinä velhoa.
 Tällä hetkellä pelissä voi liikkua, ampua tulipalloja, sekä tappaa ja kuolla
 vihollisille
