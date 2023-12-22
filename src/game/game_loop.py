@@ -26,6 +26,7 @@ class GameLoop:
         self.scoreboard = ''
         self.connection = get_db_connection()
         self.resultrepo = ResultRepository(get_db_connection())
+        self.force_end = False
 
     def start(self):
         while True:
@@ -143,6 +144,8 @@ class GameLoop:
             if self._level.switch_collision():
                 self._level.doors.update()
 
+        if self.force_end:
+            return False
         return True
 
     def _render(self):

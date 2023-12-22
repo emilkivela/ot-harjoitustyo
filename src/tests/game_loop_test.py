@@ -52,11 +52,28 @@ LEVEL_ROOM = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
               [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
 
+LEVEL_ROOM2 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+               [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+
 CELL_SIZE = 32
 
 class TestGameLoop(unittest.TestCase):
     def setUp(self):
         self.level = [Level(LEVEL_ROOM, CELL_SIZE)]
+        self.level2 = [Level(LEVEL_ROOM2, CELL_SIZE)]
     
     def test_enter_changes_game_state(self):
         events = [StubEvent(pygame.KEYDOWN, pygame.K_RETURN), StubEvent(pygame.QUIT, pygame.MOUSEBUTTONDOWN)]
@@ -154,4 +171,44 @@ class TestGameLoop(unittest.TestCase):
         game_loop.start()
         
         self.assertEqual(game_loop._right, False)
-
+    
+    def test_pressing_right_moves_wizard_correctly(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_RIGHT)]
+        game_loop = GameLoop(self.level2, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._level.wizard.facing, "left")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (288,224))
+        game_loop.force_end = True
+        game_loop.start()
+        self.assertEqual(game_loop._level.wizard.facing, "right")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (290,224))
+    
+    def test_pressing_left_moves_wizard_correctly(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_LEFT)]
+        game_loop = GameLoop(self.level2, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._level.wizard.facing, "left")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (288,224))
+        game_loop.force_end = True
+        game_loop.start()
+        self.assertEqual(game_loop._level.wizard.facing, "left")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (286,224))
+    
+    def test_pressing_up_moves_wizard_correctly(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_UP)]
+        game_loop = GameLoop(self.level2, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._level.wizard.facing, "left")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (288,224))
+        game_loop.force_end = True
+        game_loop.start()
+        self.assertEqual(game_loop._level.wizard.facing, "up")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (288,222))
+    
+    def test_pressing_down_moves_wizard_correctly(self):
+        events = [StubEvent(pygame.KEYDOWN, pygame.K_DOWN)]
+        #pygame.QUIT, pygame.MOUSEBUTTONDOWN
+        game_loop = GameLoop(self.level2, StubRenderer(), StubEventQueue(events), StubClock(), CELL_SIZE)
+        self.assertEqual(game_loop._level.wizard.facing, "left")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (288,224))
+        game_loop.force_end = True
+        game_loop.start()
+        self.assertEqual(game_loop._level.wizard.facing, "down")
+        self.assertEqual((game_loop._level.wizard.rect.x,game_loop._level.wizard.rect.y) , (288,226))

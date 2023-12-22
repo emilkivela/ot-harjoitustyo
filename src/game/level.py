@@ -218,9 +218,9 @@ class Level:
     def shoot_firecloud(self, start_x, start_y, target_x, target_y):
         end = pygame.math.Vector2(target_x, target_y)
         start = pygame.math.Vector2(start_x, start_y)
-        s = pygame.math.Vector2(end-start)
-        s.normalize_ip()
-        cloud = Firecloud(start_x, start_y, s[0], s[1])
+        target = pygame.math.Vector2(end-start)
+        target.normalize_ip()
+        cloud = Firecloud(start_x, start_y, target[0], target[1])
         self.firecloud.add(cloud)
         self.enemies.add(cloud)
 

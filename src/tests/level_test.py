@@ -36,6 +36,22 @@ LEVEL_ROOM2 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
 
+LEVEL_ROOM3 = [[1, 1, 1, 1, 1, 1, 1, 1, 6, 7, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 0, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 3, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+               [8, 8, 8, 8, 8, 8, 8, 8, 6, 6, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8]]
+
 CELL_SIZE = 32
 
 
@@ -43,6 +59,7 @@ class TestLevel(unittest.TestCase):
     def setUp(self):
         self.level_room = Level(LEVEL_ROOM, CELL_SIZE)
         self.level_room2 = Level(LEVEL_ROOM2, CELL_SIZE)
+        self.level_room3 = Level(LEVEL_ROOM3, CELL_SIZE)
 
     def assert_coordinates_equal(self, sprite, x, y):
         self.assertEqual(sprite.rect.x, x)
@@ -148,6 +165,10 @@ class TestLevel(unittest.TestCase):
             self.level_room2.projectile_colliding_enemy(firebolt)
         self.assertEqual(len(self.level_room2.enemies), 0)
         pygame.quit()
+    
+    def test_boss_gate_works_as_inteded(self):
+        for door in self.level_room3.doors:
+            self.assertTrue(door.open)
 
 
 
