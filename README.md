@@ -21,7 +21,7 @@ Pylint-testit voi suorittaa komennolla ``` poetry run invoke lint ```
 - [Changelog](https://github.com/emilkivela/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 - [Arkkitehtuuri](https://github.com/emilkivela/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 - [Käyttöohje](https://github.com/emilkivela/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
-
+- [Testausdokumentti](https://github.com/emilkivela/ot-harjoitustyo/blob/main/dokumentaatio/testaus.md)
 - [Sprite-grafiikka](https://opengameart.org/content/dungeon-crawl-32x32-tiles)
 - [Fontit](https://int10h.org/oldschool-pc-fonts/download/)
 

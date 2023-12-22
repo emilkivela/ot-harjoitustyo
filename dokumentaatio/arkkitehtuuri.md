@@ -8,17 +8,19 @@ spritet, *services* sisältäää yleisiä tarpeellisia funktioita ja *repositor
 huolehtii tietokannasta.
 
 ## Käyttöliittymä
-Pelissä on kolme erilaista näkymää:
+Pelissä on neljä erilaista näkymää:
 - Aloitusnäyttö, jossa voi asettaa käyttäjänimen sekä jossa ohjeet kontrolleihin
 - Itse peli
-- Lopetusnäyttö, kun pelaaja kuolee, näyttää pelaaja nimen sekä scoreboardin
+- Game Over-näyttö, jos pelaaja kuolee, se näyttää pelaajan nimen sekä scoreboardin
+- Game Completed-näyttö, jos pelaaja tappaa loppubossin, se näyttää pelaajan nimen sekä scoreboardin
 
 ## Sovelluslogiikka
 Seuraavassa luokkakaaviossa esitellään pelin luokkien riippuvuudet
 
 ```mermaid
  classDiagram
-    GameLoop "1" -- "1" Level
+    GameLoop "1" -- "1" Levels
+    Levels "1" -- "5" Level
     GameLoop "1" -- "1" Clock
     GameLoop "1" -- "1" EventQueue
     GameLoop "1" -- "1" Renderer
@@ -27,16 +29,35 @@ Seuraavassa luokkakaaviossa esitellään pelin luokkien riippuvuudet
     class Wizard {
         health
     }
-    Level "1" -- "2" Skeleton
+    Level "1" -- "1" Enemies
+    Enemies "1" -- "*" Skeleton
     class Skeleton {
         health
     }
+    Enemies "1" -- "1" Dragon
+    Class Dragon {
+        health
+    }
+    Enemies "1" -- "3" Firecloud
     Wizard "1" -- "3" Fireball
     Wizard "1" -- "1" HealthBar
     Level "1" -- "*" Cobble
     Level "1" -- "*" Brick
-    Level "1" -- "*" Door
+    Level "1" -- "1" Doors
+    Doors "1" -- "*" Door
+    Doors "1" -- "*" Gate
 ```
+
+## Tietojen tallennus
+Pelaajanimet sekä pelin läpäisyajat tallennetaan paikalliseen SQLite-tietokantaan.
+Tietojen tallettamisesta tietokantaan huolehtii `ResultRepository`-luokka.
+
+Testitapauksissa käytetään erillistä testitietokantaa, jotta oikea tietokanta ei sotkeudu.
+
+### Tiedostojen nimet
+Tietokannan nimen voi vapaasti konfiguroida `.env`-tiedostossa. Testitietokannan nimeä
+voi konfiguroida `.env.test`-tiedostossa
+
 ## Toiminnallisuudet
 
 ### Velhon liikuttaminen - sekvenssikaavio
