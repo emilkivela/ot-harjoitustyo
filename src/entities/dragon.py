@@ -26,7 +26,7 @@ class Dragon(pygame.sprite.Sprite):
         self.previous_shoot_time = 0
         self.aggro = True
         self.speed = 1.5
-    
+
     def should_move(self, current_time):
         """Checks how much time has passed since the skeleton last moved
 
@@ -34,7 +34,8 @@ class Dragon(pygame.sprite.Sprite):
             current_time (int): The time in milliseconds since the game started
 
         Returns:
-            Boolean: Returns True if 2 seconds have passed since the skeleton last moved, False otherwise
+            Boolean: Returns True if 2 seconds have passed since the skeleton last moved,
+                      False otherwise
         """
         return current_time - self.previous_move_time >= 2000
 

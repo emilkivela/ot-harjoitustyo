@@ -10,4 +10,3 @@ class Gate(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.open = True
-

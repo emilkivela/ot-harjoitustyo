@@ -33,7 +33,8 @@ class Skeleton(pygame.sprite.Sprite):
             current_time (int): The time in milliseconds since the game started
 
         Returns:
-            Boolean: Returns True if 2 seconds have passed since the skeleton last moved, False otherwise
+            Boolean: Returns True if 2 seconds have passed since the skeleton last moved,
+                     False otherwise
         """
         return current_time - self.previous_move_time >= 2000
 

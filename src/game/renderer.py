@@ -128,7 +128,7 @@ class Renderer():
             if i == 9:
                 break
         pygame.display.update()
-    
+
     def render_game_complete(self, username, data):
         font = load_font('Acer710_CGA.woff', 20)
         board = []

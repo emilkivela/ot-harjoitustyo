@@ -1,6 +1,7 @@
-import pygame
 import random
 import math
+import pygame
+
 
 from entities.wizard import Wizard
 from entities.skeleton import Skeleton
@@ -71,20 +72,22 @@ class Level:
         pool = [-20, 0, 20]
         for enemy in self.enemies:
             if enemy not in self.firecloud:
-                if math.dist((self.wizard.rect.x, self.wizard.rect.y), (enemy.rect.x, enemy.rect.y)) < 150:
+                if math.dist((self.wizard.rect.x, self.wizard.rect.y), \
+                              (enemy.rect.x, enemy.rect.y)) < 150:
                     enemy.aggro = True
                 if enemy.aggro:
                     dx, dy = self.wizard.rect.x - enemy.rect.x, self.wizard.rect.y - enemy.rect.y
                     dist = math.hypot(dx, dy)
                     dx, dy = dx / dist, dy / dist
                     self.move_enemy(enemy, dx, dy)
-                else: 
+                else:
                     if enemy.should_move(current_time):
                         self.move_enemy(enemy, random.choice(pool), random.choice(pool))
                         enemy.previous_move_time = current_time
                 if enemy in self.dragons:
                     if enemy.should_shoot(current_time):
-                        self.shoot_firecloud(enemy.rect.x, enemy.rect.y, self.wizard.rect.x, self.wizard.rect.y)
+                        self.shoot_firecloud(enemy.rect.x, enemy.rect.y, \
+                                             self.wizard.rect.x, self.wizard.rect.y)
                         enemy.previous_shoot_time = current_time
         self.enemies.update()
 
@@ -130,9 +133,7 @@ class Level:
             Boolean: The information if the player collides with walls or not
         """
         self.wizard.rect.move_ip(dx, dy)
-
         colliding_walls = pygame.sprite.spritecollide(self.wizard, self.walls, False)
-        
         can_move = not colliding_walls
 
         if pygame.sprite.spritecollide(self.wizard, self.doors, False) and not self.doors_open():
@@ -214,7 +215,7 @@ class Level:
 
         if self.wizard.facing == "down":
             self.firebolt.add(Firebolt(self.wizard.rect.x, self.wizard.rect.y +32, "down"))
-    
+
     def shoot_firecloud(self, start_x, start_y, target_x, target_y):
         end = pygame.math.Vector2(target_x, target_y)
         start = pygame.math.Vector2(start_x, start_y)

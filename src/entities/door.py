@@ -16,4 +16,3 @@ class Door(pygame.sprite.Sprite):
             self.image = load_image("dngn_open_door.png")
         else:
             self.image = load_image("dngn_closed_door.png")
-

@@ -45,7 +45,7 @@ class GameLoop:
             if self._game_state == "game_over":
 
                 self._renderer.render_game_over(self.textbox.text, self.scoreboard)
-            
+
             if self._game_state == "game_completed":
                 self._renderer.render_game_complete(self.textbox.text, self.scoreboard)
 
