@@ -28,3 +28,4 @@ Pylint-testit voi suorittaa komennolla ``` poetry run invoke lint ```
 ## Releaset
 - [Viikko 5](https://github.com/emilkivela/ot-harjoitustyo/archive/refs/tags/viikko5.zip)
 - [Viikko 6](https://github.com/emilkivela/ot-harjoitustyo/archive/refs/tags/viikko6.zip)
+- [Loppupalautus](https://github.com/emilkivela/ot-harjoitustyo/archive/refs/tags/loppupalautus.zip)
