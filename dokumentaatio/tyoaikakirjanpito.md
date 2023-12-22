@@ -21,4 +21,5 @@
 | 19.12 | 1    | uusien testien luonti |
 | 21.12 | 1    | vihollisten liike |
 | 21.12 | 2    | loppupomo |
-|       | 38   | yhteensä
+| 22.12 | 3    | testejä, docstring, dokumentaation päivitys |
+|       | 41   | yhteensä
