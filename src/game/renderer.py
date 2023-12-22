@@ -107,6 +107,7 @@ class Renderer():
 
         Args:
             username (text): The username that was inputted in main menu
+            data (list): The list of usernames and times fetched from database
         """
         font = load_font('Acer710_CGA.woff', 20)
         board = []
@@ -130,6 +131,12 @@ class Renderer():
         pygame.display.update()
 
     def render_game_complete(self, username, data):
+        """Renders the game completed screen if the player kills the final boss
+
+        Args:
+            username (text): The username that was inputted in main menu
+            data (list): The list of usernames and times fetched from database
+        """
         font = load_font('Acer710_CGA.woff', 20)
         board = []
         for row in data:

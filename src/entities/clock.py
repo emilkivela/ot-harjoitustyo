@@ -2,6 +2,8 @@ import pygame
 
 
 class Clock():
+    """Class that is responsible for pygame time and game ticks
+    """
     def __init__(self):
         self._clock = pygame.time.Clock()
 

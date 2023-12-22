@@ -8,6 +8,8 @@ HIT_COOLDOWN_ENEMY = pygame.USEREVENT + 1
 
 
 class GameLoop:
+    """The GameLoop class that is responsible for changing game state, player inputs and saving data to database
+    """
     def __init__(self, levels, renderer, eventqueue, clock, cell_size):
         self._levels = levels
         self._level_number = 0
@@ -29,6 +31,8 @@ class GameLoop:
         self.force_end = False
 
     def start(self):
+        """The function that starts the game loop 
+        """
         while True:
 
             if self._handle_events() is False:
@@ -54,6 +58,11 @@ class GameLoop:
         pygame.quit()
 
     def _handle_events(self):
+        """The method that is responsible for player inputs and changing game state
+
+        Returns:
+            Boolean: True id game loop should continue, False if not
+        """
 
         for event in self._eventqueue.get():
             if event.type == HIT_COOLDOWN:
@@ -149,6 +158,8 @@ class GameLoop:
         return True
 
     def _render(self):
+        """Calls for rendering in the main game state
+        """
         self._renderer.render(self._level, int(time.time()-self.start_time))
         self._renderer.render_healthbar(self._level)
         self._renderer.shoot_projectile(self._level)
