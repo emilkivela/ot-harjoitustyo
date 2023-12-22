@@ -40,6 +40,8 @@ class TextBox():
         """
         if event.key == pygame.K_BACKSPACE:
             self.text = self.text[:-1]
+        elif event.key == pygame.K_RETURN:
+            self.active = False
         else:
             if len(self.text) <= 12:
                 self.text += event.unicode

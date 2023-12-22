@@ -25,7 +25,7 @@ class Dragon(pygame.sprite.Sprite):
         self.previous_move_time = 0
         self.previous_shoot_time = 0
         self.aggro = True
-        self.speed = 2
+        self.speed = 1.5
     
     def should_move(self, current_time):
         """Checks how much time has passed since the skeleton last moved

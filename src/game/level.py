@@ -46,6 +46,7 @@ class Level:
         self.firebolt = pygame.sprite.Group()
         self.firecloud = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
+        self.boss_dead = False
         self._initialize_sprites(level_room)
         self.healthbar = HealthBar()
 
@@ -247,9 +248,12 @@ class Level:
                     if not enemy.cooldown:
                         enemy.health -= 1
                         enemy.cooldown = True
-                        pygame.time.set_timer(HIT_COOLDOWN_ENEMY, 1000)
+                        pygame.time.set_timer(HIT_COOLDOWN_ENEMY, 500)
                 if enemy.health <= 0:
+                    if enemy in self.dragons:
+                        self.boss_dead = True
                     enemy.kill()
+
 
     def _initialize_sprites(self, level_room):
         """Builds the level sprites based on the given numbers on the level matrix

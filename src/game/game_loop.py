@@ -44,6 +44,9 @@ class GameLoop:
             if self._game_state == "game_over":
 
                 self._renderer.render_game_over(self.textbox.text, self.scoreboard)
+            
+            if self._game_state == "game_completed":
+                self._renderer.render_game_complete(self.textbox.text, self.scoreboard)
 
             self._clock.tick(60)
             str(int(time.time()-self.start_time))
@@ -69,8 +72,9 @@ class GameLoop:
                     self.textbox.write(event)
 
                 if event.key == pygame.K_RETURN:
-                    self.start_time = time.time()
-                    self._game_state = "game"
+                    if self._game_state == "main_menu":
+                        self.start_time = time.time()
+                        self._game_state = "game"
 
                 if event.key == pygame.K_LEFT:
                     self._left = True
@@ -123,9 +127,13 @@ class GameLoop:
 
         if self._game_state == "game":
             if self._level.get_colliding_enemies(self._level.wizard):
-                self.resultrepo.save_info(self.textbox.text, int(time.time()-self.start_time))
                 self.scoreboard = self.resultrepo.get_scoreboard()
                 self._game_state = "game_over"
+
+            if self._level.boss_dead:
+                self.resultrepo.save_info(self.textbox.text, int(time.time()-self.start_time))
+                self.scoreboard = self.resultrepo.get_scoreboard()
+                self._game_state = "game_completed"
 
             if self._level.check_level_change():
                 self._level_number += 1
