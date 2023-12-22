@@ -20,4 +20,5 @@
 | 15.12 | 2    | napin lisääminen oven avaamiseksi, kuvien päivittäminen |
 | 19.12 | 1    | uusien testien luonti |
 | 21.12 | 1    | vihollisten liike |
-|       | 36   | yhteensä
+| 21.12 | 2    | loppupomo |
+|       | 38   | yhteensä

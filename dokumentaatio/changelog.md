@@ -29,3 +29,5 @@
 - Osumalla avautuneeseen oveen taso vaihtuu
 - Velhon kuva vaihtuu riippuen mihin suuntaan se kulkee
 - Lisätty vihollisten liike
+- Lisätty Dragon- ja Firecloud-luokat
+- Luotu loppupomo, joka syöksee tulipalloja
